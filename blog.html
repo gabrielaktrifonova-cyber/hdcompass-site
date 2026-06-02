@@ -1,84 +1,478 @@
-/* ── HD Compass Site JS ─────────────────────────────── */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* Mobile nav toggle */
-  const toggle = document.querySelector('.nav-mobile-toggle');
-  const links  = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.style.display === 'flex';
-      links.style.display = open ? 'none' : 'flex';
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '64px';
-      links.style.left = '0';
-      links.style.right = '0';
-      links.style.background = 'var(--cream)';
-      links.style.padding = '16px 28px 24px';
-      links.style.borderBottom = '0.5px solid var(--border)';
-      links.style.gap = '18px';
-      links.style.zIndex = '99';
-    });
-  }
-
-  /* Active nav link highlighting */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    const href = link.getAttribute('href') || '';
-    if (href && currentPage.includes(href.replace('.html', ''))) {
-      link.classList.add('active');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Human Design Compass Blog — 31 articles on Quantum Human Design: types, parenting, cycles, relationships, authority, strategy, and aligned living.">
+  <title>Blog | Quantum Human Design Insights — Human Design Compass</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+  <style>
+    .blog-listing { padding: var(--section-pad); background: var(--cream); }
+    .blog-listing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+      margin-top: 52px;
     }
-  });
+    .listing-card {
+      background: var(--sand);
+      border-top: 1px solid rgba(44,31,14,0.14);
+      transition: background 0.18s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .listing-card:hover { background: #fff; }
+    .listing-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      opacity: 0.88;
+      display: block;
+    }
+    .listing-card-body { padding: 22px 22px 18px; flex: 1; display: flex; flex-direction: column; }
+    .listing-card-tag {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .listing-card-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.3;
+      margin-bottom: 9px;
+      flex: 1;
+    }
+    .listing-card-excerpt {
+      font-size: 12px;
+      color: var(--warm-brown);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .listing-card-meta {
+      font-size: 10px;
+      color: rgba(44,31,14,0.28);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 900px) {
+      .blog-listing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
 
-  /* Smooth reveal on scroll */
-  const revealEls = document.querySelectorAll(
-    '.reading-card, .testi-card, .blog-card, .compass-feat, .about-cert-num'
-  );
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
+<nav class="nav">
+  <a class="nav-logo" href="index.html">Human Design <span>Compass</span></a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="index.html#readings">Chart Readings</a>
+    <a href="compass-ai.html">Compass AI</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="inner-compass.html">My Inner Compass</a>
+    <a href="testimonials.html">Reviews</a>
+    <a href="contact.html">Connect</a>
+  </div>
+  <button class="nav-cta" data-book>Book a Reading</button>
+  <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
+</nav>
 
-    revealEls.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      obs.observe(el);
-    });
-  }
+<div class="page-hero">
+  <span class="eyebrow">The Blog · 33 Articles</span>
+  <h1>Insights for your<br><em>aligned life</em></h1>
+</div>
 
-  /* Contact form — prevent default, show thank you */
-  const form = document.querySelector('.contact-form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Message sent ✦';
-      btn.disabled = true;
-      btn.style.background = 'var(--gold)';
-      btn.style.color = 'var(--brown)';
-    });
-  }
+<section class="blog-listing">
+  <div class="blog-listing-grid">
 
-  /* Booking button → TidyCal */
-  document.querySelectorAll('[data-book]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.open('https://www.hdcompass.com/home#bookings', '_blank');
-    });
-  });
+    <a href="https://www.hdcompass.com/blog/stop-forcing-yourself-to-work-out-the-same-way-every-day" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/6a1dafff8581af2f2654fe72/Blog+post+31+%282%29.png?format=600w" alt="Stop Forcing Yourself to Work Out the Same Way Every Day" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Movement · Body Love</span>
+        <h2 class="listing-card-title">Stop Forcing Yourself to Work Out the Same Way Every Day — Your Human Design Has a Better Idea</h2>
+        <p class="listing-card-excerpt">Nothing was wrong with me. The plan was wrong for me. How understanding your HD type changes your entire relationship with movement.</p>
+        <span class="listing-card-meta">Jun 1, 2026</span>
+      </div>
+    </a>
 
-  /* Compass AI button */
-  document.querySelectorAll('[data-compass]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.location.href = 'compass-ai.html';
-    });
-  });
+    <a href="https://www.hdcompass.com/blog/why-you-keep-abandoning-things-you-love" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/6a0deae6aa6c644fbd52e8c5/A_woman_sitting_peacefully.jpg?format=600w" alt="Why You Keep Abandoning Things You Love" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Alignment · Energy Types</span>
+        <h2 class="listing-card-title">Why You Keep Abandoning Things You Love — What Your Human Design Reveals</h2>
+        <p class="listing-card-excerpt">Nothing is wrong with you. You've been trying to sustain energy that was never designed to be sustained in the way you've been taught.</p>
+        <span class="listing-card-meta">May 20, 2026</span>
+      </div>
+    </a>
 
-});
+    <a href="https://www.hdcompass.com/blog/finding-yourself-in-uncertain-times-part-1" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1775057287266-MRG29V60DEKU7GW50S3F/How+to+Stay+Grounded+in+Uncertain+Times.png?format=600w" alt="Finding Yourself in Uncertain Times" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Grounding · Uncertainty</span>
+        <h2 class="listing-card-title">Finding Yourself in Uncertain Times</h2>
+        <p class="listing-card-excerpt">How to stay grounded when everything feels unstable — using your HD type, strategy and authority as your anchor.</p>
+        <span class="listing-card-meta">Apr 1, 2026</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/is-a-professional-human-design-reading-worth-it" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1770651754490-LZSRKUJ4GKYO8AMFVV2C/Human+Design+Reading+by+Certified+coach.png?format=600w" alt="Is a Professional Human Design Reading Worth It" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Readings · QHD</span>
+        <h2 class="listing-card-title">Is a Professional Human Design Reading Worth It?</h2>
+        <p class="listing-card-excerpt">Why free charts only scratch the surface — and what's really different about working with a certified specialist.</p>
+        <span class="listing-card-meta">Feb 9, 2026</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/cycle-syncing-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1768932096495-YFY55Q3DBRMPUSEXHMCL/Your+Body+Has+a+Rhythm+Cycle+Syncing+Through+Human+Design.png?format=600w" alt="Cycle Syncing Through Human Design" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Energy · Cycles</span>
+        <h2 class="listing-card-title">Your Body Has a Rhythm: Cycle Syncing Through Human Design</h2>
+        <p class="listing-card-excerpt">What if productivity isn't about doing more — but about honoring your natural rhythm?</p>
+        <span class="listing-card-meta">Jan 20, 2026</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/after-holidays-motivation-crash" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1767981659776-F2B9HW4ARGSW65HPI9HJ/The+Quiet+Crash+After+the+Holidays-+And+How+to+Be+Gentle+With+Yourself.png?format=600w" alt="The Quiet Crash After the Holidays" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Alignment · Motivation</span>
+        <h2 class="listing-card-title">The Quiet Crash After the Holidays — And How to Be Gentle With Yourself</h2>
+        <p class="listing-card-excerpt">Feeling unmotivated after the holidays? Nothing has gone wrong. This is a gentle guide back to yourself.</p>
+        <span class="listing-card-meta">Jan 9, 2026</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/how-screen-time-sleep-and-winter-energy-affect-you-through-your-human-design-type" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1763410906389-VROB6J29APLCTU7JLLO9/Human+design+centers+blog+post.png?format=600w" alt="Screen Time Sleep and Winter Energy" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Winter Energy · Sleep · Screens</span>
+        <h2 class="listing-card-title">How Screen Time, Sleep, and Winter Energy Affect You Through Your HD Type</h2>
+        <p class="listing-card-excerpt">Each Human Design type processes winter energy and digital overload very differently. Here's what to know.</p>
+        <span class="listing-card-meta">Nov 18, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/a-four-day-transformation" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/0d3f1242-1b39-48bd-9e03-499ddcce6991/Why+I+Detoxed+My+Child+from+Screens-+What+I+Learned.png?format=600w" alt="A Four-Day Transformation" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Personal</span>
+        <h2 class="listing-card-title">A Four-Day Transformation: Why I Detoxed My Child from Screens</h2>
+        <p class="listing-card-excerpt">By day two her mood softened. By day four, she was back to herself. A mother's story of trusting her intuition.</p>
+        <span class="listing-card-meta">Nov 18, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/whattodowithyourhumandesignchart" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1762540446595-9922HM32Z9KSWZ4I8FQ9/1+What+To+Do+With+Your+Human+Design+Chart+How+To+Start+Living+Your+Design+in+Everyday+Life.jpg?format=600w" alt="What To Do With Your Human Design Chart" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Foundations · Practice</span>
+        <h2 class="listing-card-title">What To Do With Your Human Design Chart: Turning Knowledge Into Embodied Practice</h2>
+        <p class="listing-card-excerpt">You've discovered your chart — but how do you actually live it? A practical guide to embodied alignment.</p>
+        <span class="listing-card-meta">Nov 7, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/how-to-exercise-based-on-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1761329883930-RF7YJWOXTMS8B37H8MQT/How+To+Best+Approach+Movement+and+Exercise+Based+on+Your+Unique+Human+Design+Chart.png?format=600w" alt="Exercise Based on Human Design" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Movement · Wellbeing</span>
+        <h2 class="listing-card-title">How To Best Approach Movement and Exercise Based on Your Human Design</h2>
+        <p class="listing-card-excerpt">When exercise aligns with your type, it becomes a source of vitality and joy — not exhaustion.</p>
+        <span class="listing-card-meta">Oct 24, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/humandesignandrelationships" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1760711707843-SV806U37BJ5NBYWUFE2B/20251017_1021_Energetic+Connection+Silhouettes_simple_compose_01k7s8mmjhfnvtzc94ek3zkwde.png?format=600w" alt="Human Design and Relationships" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Relationships · Love</span>
+        <h2 class="listing-card-title">How Each Human Design Type Connects in Love and Partnership</h2>
+        <p class="listing-card-excerpt">Love doesn't have to be hard when it's aligned with your design. Discover how your type shapes how you love.</p>
+        <span class="listing-card-meta">Oct 17, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/what-does-it-mean-to-be-a-reflector-in-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1759264590742-NHDSMIR2RC5AXHWA4IB5/Blog+Post+21+Reflectors.png?format=600w" alt="What Does It Mean to Be a Reflector" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Reflector</span>
+        <h2 class="listing-card-title">What Does It Mean to Be a Reflector in Human Design?</h2>
+        <p class="listing-card-excerpt">Reflectors are the rare mirrors of humanity — 1% of the population. Learn how to align with your lunar strategy.</p>
+        <span class="listing-card-meta">Sep 30, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/what-does-it-mean-to-be-a-projector-in-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1759264568942-B10JW4M1OLDWXPQ0S2EY/Blog+Post+20+Projector+%282%29.png?format=600w" alt="What Does It Mean to Be a Projector" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Projector</span>
+        <h2 class="listing-card-title">What Does It Mean to Be a Projector in Human Design?</h2>
+        <p class="listing-card-excerpt">Projectors are guides, leaders, and visionaries. Learn how to thrive waiting for the right invitation.</p>
+        <span class="listing-card-meta">Sep 11, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/what-does-it-mean-to-be-a-manifesting-generator-in-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1759264547909-D8AKDZB6ZWEHDMYE4CQ4/Blog+Post+19+MG+%281%29.png?format=600w" alt="What Does It Mean to Be a Manifesting Generator" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Manifesting Generator</span>
+        <h2 class="listing-card-title">What Does It Mean to Be a Manifesting Generator?</h2>
+        <p class="listing-card-excerpt">Fast-moving, multi-passionate creators. Learn how to trust your sacral response and follow your design.</p>
+        <span class="listing-card-meta">Aug 19, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/generator-in-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1755111692785-9M2UXHEIO7PRPH1HDBQ8/Blog+Post+18+Generators.png?format=600w" alt="What Does It Mean to Be a Generator" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Generator</span>
+        <h2 class="listing-card-title">What Does It Mean to Be a Generator in Human Design?</h2>
+        <p class="listing-card-excerpt">Generators are the life force of humanity — here to build, create, and respond. Learn the keys to living with satisfaction.</p>
+        <span class="listing-card-meta">Aug 13, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/manifestor-in-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1753900536289-BSF7N9EAUNXP0H3QA0Y3/Blog+Post+17+Manifestors.png?format=600w" alt="What Does It Mean to Be a Manifestor" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Manifestor</span>
+        <h2 class="listing-card-title">What Does It Mean to Be a Manifestor in Human Design?</h2>
+        <p class="listing-card-excerpt">Manifestors are here to initiate — not to ask permission. Learn how to thrive as an Initiator.</p>
+        <span class="listing-card-meta">Jul 30, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-a-reflector-child" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1753110905898-MD53DIFJP6L8TXUUUX56/Blog+post+16+Raising+an+Aligned+Reflector+Child.png?format=600w" alt="Raising an Aligned Reflector Child" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Reflector Child</span>
+        <h2 class="listing-card-title">Raising an Aligned Reflector Child</h2>
+        <p class="listing-card-excerpt">Reflector children mirror the health of their environment. Learn how to support their deep lunar wisdom.</p>
+        <span class="listing-card-meta">Jul 21, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-projector-child" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752867614769-C1ADQBCKL0WZ7O5A63FD/Blog+post+16Raising+an+Aligned+Projector+Child+%281%29.png?format=600w" alt="Raising an Aligned Projector Child" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Projector Child</span>
+        <h2 class="listing-card-title">Raising an Aligned Projector Child</h2>
+        <p class="listing-card-excerpt">Projector children aren't here to keep up — they're here to guide. Learn how to parent them with recognition and rest.</p>
+        <span class="listing-card-meta">Jul 14, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-a-generator-child" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752867583270-THQKFAPVQPCKL91XFCAS/Blog+post+14+Raising+an+Aligned+Generator+Child+%281%29.png?format=600w" alt="Raising an Aligned Generator Child" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Generator Child</span>
+        <h2 class="listing-card-title">Raising an Aligned Generator Child</h2>
+        <p class="listing-card-excerpt">Generator children are here to do what they love — and light up the world doing it.</p>
+        <span class="listing-card-meta">Jul 9, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-an-aligned-manifesting-generator-child" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752867503478-2QMEATPZLIEOX89S8FFA/Blog+post+13Raising+an+Aligned+Manifesting+Generator+Child+Nurturing+Energy+%26+Flexibility+with+Human+Design+%281%29.png?format=600w" alt="Raising an Aligned MG Child" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · MG Child</span>
+        <h2 class="listing-card-title">Raising an Aligned Manifesting Generator Child</h2>
+        <p class="listing-card-excerpt">MG children are energetic explorers — here to pivot, multitask, and follow their own path.</p>
+        <span class="listing-card-meta">Jul 4, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-an-aligned-manifestor-child" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752867476425-61O65UTU8ZMH23RI3WZ9/Blog+post+12+Raising+an+Aligned+Manifestor+Child+Nurturing+Independence+with+Human+Design+%282%29.png?format=600w" alt="Raising an Aligned Manifestor Child" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Manifestor Child</span>
+        <h2 class="listing-card-title">Raising an Aligned Manifestor Child</h2>
+        <p class="listing-card-excerpt">Manifestor children are wired to initiate — not to follow. Learn how to guide them with awareness, not control.</p>
+        <span class="listing-card-meta">Jul 3, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/raising-aligned-children-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752867207846-TIWC65AXZAIU546M26NL/Blog+post+11Raising+Aligned+Children+Human+Design+as+a+Parenting+Compass.png?format=600w" alt="Raising Aligned Children" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Overview</span>
+        <h2 class="listing-card-title">Raising Aligned Children: Human Design as a Parenting Compass</h2>
+        <p class="listing-card-excerpt">Every child is designed with unique energy, needs, and gifts. Human Design helps you see and honor who they really are.</p>
+        <span class="listing-card-meta">Jul 2, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-four-arrows" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1751062368278-DF6RVKTQNSY6FUBJC212/Blog+post+10+Decoding+the+Four+Arrows+in+Human+Design+The+Four+Transformations+.png?format=600w" alt="The Four Arrows in Human Design" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Advanced · Four Arrows</span>
+        <h2 class="listing-card-title">Decoding the Four Arrows in Human Design: The Four Transformations</h2>
+        <p class="listing-card-excerpt">The little arrows in your chart hold secrets about how you think, digest, manifest, and thrive.</p>
+        <span class="listing-card-meta">Jun 27, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/emotional-themes-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1749844925673-6GG7EOZ8XX5JSSXXEHJG/How+to+Know+if+you+re+in+alignment+Emotional+Themes.png?format=600w" alt="Emotional Themes in Human Design" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Alignment · Emotions</span>
+        <h2 class="listing-card-title">How to Know If You're in Alignment: Emotional Themes in Human Design</h2>
+        <p class="listing-card-excerpt">Frustration, bitterness, anger? These emotions are your design's way of guiding you back to yourself.</p>
+        <span class="listing-card-meta">Jun 13, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-centers-and-body-connections" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1748619706752-E2ETGSMQ9BZI7NMQ8SUT/Blog+post+6The+Human+Design+Centers+and+the+Body+The+9+Energy+Centers+and+Their+Physical+Connections.png?format=600w" alt="Human Design Centers and the Body" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Centers · Body</span>
+        <h2 class="listing-card-title">The 9 Human Design Centers and Their Physical Connections</h2>
+        <p class="listing-card-excerpt">Each center connects directly to organs, glands, and body systems. Learn what your chart reveals about your body.</p>
+        <span class="listing-card-meta">May 30, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-authority" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1747935144796-XN61523WMZUXGLHZPOJ0/Make+Aligned+Decisions.+Trust+Your+Authority.+%281%29.png?format=600w" alt="Human Design Authority" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Authority · Decisions</span>
+        <h2 class="listing-card-title">Authority in Human Design: How to Make Aligned Decisions</h2>
+        <p class="listing-card-excerpt">Your Authority is your body's way of guiding you. Discover the 7 types and how to follow your inner truth.</p>
+        <span class="listing-card-meta">May 22, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-types" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1747935887979-36PHDNBPZX48081OOE81/Blog+post+2The+5+Human+Design+Types.png?format=600w" alt="The 5 Human Design Types" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Types · Foundations</span>
+        <h2 class="listing-card-title">The 5 Human Design Types: Which One Are You?</h2>
+        <p class="listing-card-excerpt">One of the most powerful first steps on your Human Design journey. Explore all five types and find your home.</p>
+        <span class="listing-card-meta">May 6, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-strategy" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1749059306649-50IBTRNU4RSO0VVC07CB/Blog+post+7Human+Design+Strategy+How+to+Flow+with+Life+Instead+of+Pushing+Against+It.png?format=600w" alt="Human Design Strategy" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Strategy · Flow</span>
+        <h2 class="listing-card-title">Human Design Strategy: How to Flow with Life Instead of Pushing Against It</h2>
+        <p class="listing-card-excerpt">Strategy is your energetic posture — the way you engage with life that reduces resistance and opens clarity.</p>
+        <span class="listing-card-meta">Jun 4, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/understanding-the-nine-human-design-centers" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1748619706752-E2ETGSMQ9BZI7NMQ8SUT/Blog+post+6The+Human+Design+Centers+and+the+Body+The+9+Energy+Centers+and+Their+Physical+Connections.png?format=600w" alt="The Nine Human Design Centers" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Centers · Foundations</span>
+        <h2 class="listing-card-title">Defined &amp; Undefined Centers in Human Design</h2>
+        <p class="listing-card-excerpt">Understanding your defined and undefined centers is one of the most illuminating layers of your chart.</p>
+        <span class="listing-card-meta">May 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/understanding-your-human-design-profile" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1747935887979-36PHDNBPZX48081OOE81/Blog+post+2The+5+Human+Design+Types.png?format=600w" alt="Understanding Your Human Design Profile" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Profile · Identity</span>
+        <h2 class="listing-card-title">Understanding Your Human Design Profile: The Role You Came Here to Play</h2>
+        <p class="listing-card-excerpt">Your profile is the costume your soul chose to wear in this lifetime — and it shapes everything about your path.</p>
+        <span class="listing-card-meta">May 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/understanding-human-design-channels" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1748619706752-E2ETGSMQ9BZI7NMQ8SUT/Blog+post+6The+Human+Design+Centers+and+the+Body+The+9+Energy+Centers+and+Their+Physical+Connections.png?format=600w" alt="Understanding Human Design Channels" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Channels · Energy Flow</span>
+        <h2 class="listing-card-title">Understanding Human Design Channels: Your Unique Energy Flow</h2>
+        <p class="listing-card-excerpt">Channels are the defined pathways between centers — they reveal your consistent gifts and themes.</p>
+        <span class="listing-card-meta">May 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/what-is-human-design" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1747935887979-36PHDNBPZX48081OOE81/Blog+post+2The+5+Human+Design+Types.png?format=600w" alt="What Is Human Design" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Foundations · Start Here</span>
+        <h2 class="listing-card-title">What Is Human Design?</h2>
+        <p class="listing-card-excerpt">New to Human Design? Start here. An accessible introduction to the system that's changing how people understand themselves.</p>
+        <span class="listing-card-meta">Apr 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog/human-design-centers-and-body-connections" target="_blank" rel="noopener" class="listing-card">
+      <img class="listing-card-img" src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1749844925673-6GG7EOZ8XX5JSSXXEHJG/How+to+Know+if+you+re+in+alignment+Emotional+Themes.png?format=600w" alt="Human Design and Parenting" loading="lazy" onerror="this.style.display='none'">
+      <div class="listing-card-body">
+        <span class="listing-card-tag">Parenting · Featured</span>
+        <h2 class="listing-card-title">A Four-Day Transformation: Why I Detoxed My Child from Screens — What I Learned</h2>
+        <p class="listing-card-excerpt">The transformation was unmistakable. A deeply personal story about intuitive parenting and the power of presence.</p>
+        <span class="listing-card-meta">Nov 2025</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div style="margin-top: 52px; text-align: center; padding-top: 40px; border-top: 0.5px solid var(--border);">
+    <p style="font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--warm-brown); margin-bottom: 20px;">
+      Want personalized guidance based on your unique chart?
+    </p>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <button class="btn btn-dark" data-book>Book a Reading</button>
+      <a href="compass-ai.html" class="btn btn-outline">Try Compass AI Free</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">Human Design <span>Compass</span></div>
+      <p class="footer-brand-tag">Personalized Quantum Human Design readings to help you live with clarity, confidence, and purpose.</p>
+      <a class="footer-email" href="mailto:humandesign@hdcompass.com">humandesign@hdcompass.com</a>
+      <p style="font-size:11px;color:rgba(245,237,216,0.2);margin-top:8px;">Based in Barrie, Ontario, Canada<br>Serving clients worldwide in English &amp; Bulgarian</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Explore</p>
+      <ul class="footer-links">
+        <li><a href="index.html#readings">Chart Readings</a></li>
+        <li><a href="compass-ai.html">Compass AI</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="inner-compass.html">My Inner Compass</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="booking-policies.html">Booking Policies</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/human.design.compass" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@quantumhdcompass" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.youtube.com/@HDCompass" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.linkedin.com/company/human-design-compass/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/HDCompassofficial" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="contact.html">Let's Connect</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Human Design Compass · Created with love by Gabriela Trifonova</p>
+    <p class="footer-copy">hdcompass.com</p>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
