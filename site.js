@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Booking button → TidyCal */
   document.querySelectorAll('[data-book]').forEach(btn => {
     btn.addEventListener('click', () => {
-      window.open('https://www.hdcompass.com/home#bookings', '_blank');
+      window.open('https://tidycal.com/humandesign1', '_blank');
     });
   });
 
