@@ -3,23 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compass AI — your personal Quantum Human Design AI guide. Ask your first question free. Powered by Karen Parker's QHD system. $14 CAD/month.">
-  <title>Compass AI — Your Quantum Human Design Guide | Human Design Compass</title>
+  <meta name="description" content="My Inner Compass — seasonal rituals, nourishing recipes, soulful reflections, and grounded living by Gabriela Trifonova. The personal side of Human Design Compass.">
+  <title>My Inner Compass | Rituals, Recipes & Soulful Reflections — Human Design Compass</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
   <style>
-    .compass-embed-wrap {
+    .ic-hero {
       background: var(--brown);
-      padding: 0 56px 80px;
+      padding: 80px 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
     }
-    .compass-embed-frame {
+    .ic-hero-text h1 {
+      font-family: var(--serif);
+      font-size: 58px;
+      font-weight: 300;
+      color: var(--sand);
+      line-height: 1.08;
+      margin-top: 14px;
+      margin-bottom: 20px;
+    }
+    .ic-hero-text h1 em { color: var(--gold); font-style: italic; }
+    .ic-hero-text p {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,237,216,0.55);
+      line-height: 1.75;
+    }
+    .ic-hero-img {
       width: 100%;
-      min-height: 780px;
-      border: none;
-      background: transparent;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      opacity: 0.75;
+    }
+    .ic-hero-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: rgba(201,168,76,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ic-hero-symbol {
+      font-family: var(--serif);
+      font-size: 120px;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+    }
+    .ic-listing { padding: var(--section-pad); background: var(--cream); }
+    .ic-listing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+      margin-top: 48px;
+    }
+    .ic-card {
+      background: var(--sand);
+      border-top: 1px solid rgba(44,31,14,0.14);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.18s;
+    }
+    .ic-card:hover { background: #fff; }
+    .ic-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      opacity: 0.88;
+      display: block;
+    }
+    .ic-card-body { padding: 22px 22px 18px; flex: 1; display: flex; flex-direction: column; }
+    .ic-card-tag {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .ic-card-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.3;
+      margin-bottom: 9px;
+      flex: 1;
+    }
+    .ic-card-excerpt {
+      font-size: 12px;
+      color: var(--warm-brown);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .ic-card-meta {
+      font-size: 10px;
+      color: rgba(44,31,14,0.28);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     @media (max-width: 900px) {
-      .compass-embed-wrap { padding: 0 0 56px; }
+      .ic-hero { grid-template-columns: 1fr; padding: 60px 28px 48px; }
+      .ic-hero-text h1 { font-size: 40px; }
+      .ic-listing-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -30,9 +121,9 @@
   <div class="nav-links">
     <a href="about.html">About</a>
     <a href="index.html#readings">Chart Readings</a>
-    <a href="compass-ai.html" class="active">Compass AI</a>
+    <a href="compass-ai.html">Compass AI</a>
     <a href="blog.html">Blog</a>
-    <a href="inner-compass.html">My Inner Compass</a>
+    <a href="inner-compass.html" class="active">My Inner Compass</a>
     <a href="testimonials.html">Reviews</a>
     <a href="contact.html">Connect</a>
   </div>
@@ -41,75 +132,114 @@
 </nav>
 
 <!-- HERO -->
-<section class="compass-hero">
-  <span class="eyebrow" style="color: rgba(201,168,76,0.55); display: block; margin-bottom: 16px;">✦ Introducing</span>
-  <h1>Compass <em>AI</em></h1>
-  <p>Your personal Quantum Human Design guide — available whenever you need clarity, day or night.</p>
-  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative;">
-    <a href="https://hdcompass.com/hdcompass-ai" class="btn btn-gold">Try Your First Question Free</a>
-    <a href="index.html#readings" class="btn btn-outline" style="border-color: rgba(201,168,76,0.3); color: rgba(245,237,216,0.6);">Book a Human Reading Instead</a>
+<section class="ic-hero">
+  <div class="ic-hero-text">
+    <span class="eyebrow" style="color: rgba(201,168,76,0.6);">Gabriela's personal space</span>
+    <h1>My Inner <em>Compass</em></h1>
+    <p>The real, raw, and soulful ways I stay grounded in daily life — seasonal rituals, nourishing recipes, quiet lakeside mornings, family moments, and personal reflections.<br><br>
+    Not everything here is about Human Design. But everything carries the same energy: honoring the process, softening into self-awareness, and trusting that we are all held by something greater.<br><br>
+    <em>Come as you are. Breathe. Sip. Reflect. Align.</em></p>
   </div>
-  <p style="font-size: 11px; color: rgba(201,168,76,0.35); margin-top: 18px; letter-spacing: 0.06em; position: relative;">No account needed · $14 CAD/month after your free question · Cancel anytime</p>
-</section>
-
-<!-- FEATURES -->
-<section class="compass-features">
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">✦</span>
-    <h3 class="compass-feat-title">Real chart data</h3>
-    <p class="compass-feat-body">Calculates your actual Quantum Human Design chart from your birth date, time, and location — not generic descriptions that could apply to anyone.</p>
-  </div>
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">◎</span>
-    <h3 class="compass-feat-title">Karen Parker's system</h3>
-    <p class="compass-feat-body">Speaks in the elevated, empowering language of Quantum Human Design — honoring who you truly are, never using limiting "Not-Self" framing.</p>
-  </div>
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">∞</span>
-    <h3 class="compass-feat-title">Always available</h3>
-    <p class="compass-feat-body">Ask about your Type, Authority, Gates, relationships, parenting, career, or anything in your life through the lens of your unique design. Any time, any question.</p>
-  </div>
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">☞</span>
-    <h3 class="compass-feat-title">Personalized to you</h3>
-    <p class="compass-feat-body">Every response is grounded in your specific chart — your Type, Profile, defined and undefined centers, and active Gates and Channels.</p>
-  </div>
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">♡</span>
-    <h3 class="compass-feat-title">Parenting compass</h3>
-    <p class="compass-feat-body">Coming soon: a dedicated parenting guide to help you raise your children in alignment with their unique design — meeting them exactly where they are.</p>
-  </div>
-  <div class="compass-feat">
-    <span class="compass-feat-symbol">★</span>
-    <h3 class="compass-feat-title">$14 CAD / month</h3>
-    <p class="compass-feat-body">One free question to start — no account needed. Subscribe for unlimited questions, cancel anytime. Less than the cost of a coffee a week.</p>
-  </div>
-</section>
-
-<!-- SAMPLE CONVERSATION -->
-<section style="padding: var(--section-pad); background: var(--sand);">
-  <div style="max-width: 680px; margin: 0 auto;">
-    <span class="eyebrow">Sample conversation</span>
-    <h2 class="section-title" style="margin-bottom: 40px;">What can you ask?</h2>
-
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-
-      <div style="background: var(--brown); padding: 24px 28px;">
-        <p style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px;">Question from a Generator</p>
-        <p style="font-family: var(--serif); font-size: 16px; font-style: italic; color: rgba(245,237,216,0.6); margin-bottom: 14px;">"Why do I start projects with so much energy and then suddenly lose interest?"</p>
-        <p style="font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--sand); line-height: 1.7;">As an Alchemist (Generator), your Sacral energy is designed to respond to what genuinely lights you up — not to sustain momentum through sheer will. When the initial excitement fades, it's not a character flaw; it's your Sacral telling you the energy for that particular thing has been used. The invitation is to follow your gut response rather than your head's plans...</p>
-      </div>
-
-      <div style="background: var(--brown); padding: 24px 28px;">
-        <p style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px;">Question about parenting</p>
-        <p style="font-family: var(--serif); font-size: 16px; font-style: italic; color: rgba(245,237,216,0.6); margin-bottom: 14px;">"My daughter never listens — how do I understand her better through Human Design?"</p>
-        <p style="font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--sand); line-height: 1.7;">To give you the most aligned guidance, I'll need your daughter's birth information. Once I calculate her chart, we can explore her Type and Strategy — which will reveal exactly how she's designed to receive communication and make decisions. Manifestor children, for example, need to be informed rather than instructed...</p>
-      </div>
-
+  <div>
+    <img
+      class="ic-hero-img"
+      src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/84ce5129-36a1-4310-b785-bf08be33acb1/20260401_1208_Introspective+Serenity_simple_compose_01kn4wv5c4fykakpcdq9kkg6sz.png?format=800w"
+      alt="My Inner Compass"
+      onerror="this.style.display='none'">
+    <div class="ic-hero-img-placeholder" style="display:none;">
+      <span class="ic-hero-symbol">◎</span>
     </div>
+  </div>
+</section>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="https://hdcompass.com/hdcompass-ai" class="btn btn-dark">Start Your Free Question →</a>
+<!-- POSTS -->
+<section class="ic-listing">
+  <div style="max-width: 560px;">
+    <span class="eyebrow">Seasonal · Soulful · Personal</span>
+    <h2 class="section-title">Rituals, recipes &amp; reflections</h2>
+    <p class="section-sub">The things that nourish my nervous system, calm my mind, and bring sweetness to my days.</p>
+  </div>
+
+  <div class="ic-listing-grid">
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass/self-compassion-reminder" target="_blank" rel="noopener" class="ic-card">
+      <img class="ic-card-img"
+        src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752690590925-E4WJ8EUZIW64N8H7N0MS/20250715_1548_Soulful+Compass+Guidance_remix_01k07szne0eb2aqwektbkag50b.png?format=600w"
+        alt="Following My Inner Compass" loading="lazy" onerror="this.style.display='none'">
+      <div class="ic-card-body">
+        <span class="ic-card-tag">Reflection · Self-Compassion</span>
+        <h2 class="ic-card-title">Following My Inner Compass: A Gentle Reminder for the Days We Blame Ourselves</h2>
+        <p class="ic-card-excerpt">There are moments when self-blame creeps in quietly. This is a gentle reminder to pause, soften, and reconnect to your inner compass.</p>
+        <span class="ic-card-meta">Jul 14, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass/lavender-syrup" target="_blank" rel="noopener" class="ic-card">
+      <img class="ic-card-img"
+        src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/1752522173288-V4Q6EXLKUHDFJC4QP525/Lavender.jpg?format=600w"
+        alt="Lavender Syrup" loading="lazy" onerror="this.style.display='none'">
+      <div class="ic-card-body">
+        <span class="ic-card-tag">Recipe · Summer Ritual</span>
+        <h2 class="ic-card-title">Lavender Syrup for the Soul: A Summer Ritual of Calm and Sweetness</h2>
+        <p class="ic-card-excerpt">Homemade lavender syrup — harvested by hand, steeped slowly, and poured into everything that needs a little more magic. Includes a classic French 75 recipe.</p>
+        <span class="ic-card-meta">Jul 14, 2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass/almond-flour-cookies" target="_blank" rel="noopener" class="ic-card">
+      <img class="ic-card-img"
+        src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/Main+Inner+Compass+Blog+Image.png?format=600w"
+        alt="Almond Flour Cookies" loading="lazy" onerror="this.style.display='none'">
+      <div class="ic-card-body">
+        <span class="ic-card-tag">Recipe · Baking</span>
+        <h2 class="ic-card-title">Almond Flour Cookies with the Kids: A Slow Afternoon Kind of Magic</h2>
+        <p class="ic-card-excerpt">Some of our sweetest memories happen in the kitchen. Simple, nourishing, and made with love.</p>
+        <span class="ic-card-meta">2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass/lakeside-morning" target="_blank" rel="noopener" class="ic-card">
+      <img class="ic-card-img"
+        src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/Main+Inner+Compass+Blog+Image.png?format=600w"
+        alt="Lakeside Morning" loading="lazy" onerror="this.style.display='none'">
+      <div class="ic-card-body">
+        <span class="ic-card-tag">Nature · Ritual · Morning</span>
+        <h2 class="ic-card-title">A Quiet Lakeside Morning: What Nature Teaches Us About Slowing Down</h2>
+        <p class="ic-card-excerpt">Before the world wakes up, there is water. And in the stillness of an early morning swim, everything resets.</p>
+        <span class="ic-card-meta">2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass/winter-grounding" target="_blank" rel="noopener" class="ic-card">
+      <img class="ic-card-img"
+        src="https://images.squarespace-cdn.com/content/v1/679bb21d901f65118cb3ed2e/Main+Inner+Compass+Blog+Image.png?format=600w"
+        alt="Winter Grounding" loading="lazy" onerror="this.style.display='none'">
+      <div class="ic-card-body">
+        <span class="ic-card-tag">Winter · Grounding · Season</span>
+        <h2 class="ic-card-title">Winter Grounding: How I Stay Rooted When the World Goes Dark and Cold</h2>
+        <p class="ic-card-excerpt">Winter invites us to go inward. Here's how I stay grounded during the season that asks for the most from us.</p>
+        <span class="ic-card-meta">2025</span>
+      </div>
+    </a>
+
+    <a href="https://www.hdcompass.com/blog-my-inner-compass" target="_blank" rel="noopener" class="ic-card" style="align-items: center; justify-content: center; min-height: 200px; border: 0.5px dashed rgba(201,168,76,0.3); background: transparent;">
+      <div class="ic-card-body" style="text-align: center; padding: 32px;">
+        <span style="font-size: 28px; color: var(--gold); display: block; margin-bottom: 12px;">✦</span>
+        <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--warm-brown); margin-bottom: 14px;">More reflections and rituals on Squarespace</p>
+        <span style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);">Read all posts →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div style="margin-top: 52px; padding: 36px; background: var(--brown); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+    <div>
+      <p style="font-family: var(--serif); font-size: 20px; font-style: italic; color: rgba(245,237,216,0.65); margin-bottom: 6px;">Want to understand yourself even more deeply?</p>
+      <p style="font-size: 12px; color: rgba(201,168,76,0.5); letter-spacing: 0.05em;">Your Human Design chart reveals your unique energetic blueprint.</p>
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <button class="btn btn-gold" data-book>Book a Reading</button>
+      <a href="compass-ai.html" class="btn btn-outline" style="border-color: rgba(201,168,76,0.3); color: rgba(245,237,216,0.5);">Try Compass AI Free</a>
     </div>
   </div>
 </section>

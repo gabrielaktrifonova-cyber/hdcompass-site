@@ -3,19 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meet Gabriela Trifonova — founder of Human Design Compass and Certified Quantum Human Design Specialist trained in Dr. Karen Curry Parker's system.">
-  <title>About Gabriela | Certified QHD Specialist — Human Design Compass</title>
+  <meta name="description" content="Compass AI — your personal Quantum Human Design AI guide. Ask your first question free. Powered by Karen Parker's QHD system. $14 CAD/month.">
+  <title>Compass AI — Your Quantum Human Design Guide | Human Design Compass</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+  <style>
+    .compass-embed-wrap {
+      background: var(--brown);
+      padding: 0 56px 80px;
+    }
+    .compass-embed-frame {
+      width: 100%;
+      min-height: 780px;
+      border: none;
+      background: transparent;
+    }
+    @media (max-width: 900px) {
+      .compass-embed-wrap { padding: 0 0 56px; }
+    }
+  </style>
 </head>
 <body>
 
 <nav class="nav">
   <a class="nav-logo" href="index.html">Human Design <span>Compass</span></a>
   <div class="nav-links">
-    <a href="about.html" class="active">About</a>
+    <a href="about.html">About</a>
     <a href="index.html#readings">Chart Readings</a>
-    <a href="compass-ai.html">Compass AI</a>
+    <a href="compass-ai.html" class="active">Compass AI</a>
     <a href="blog.html">Blog</a>
     <a href="inner-compass.html">My Inner Compass</a>
     <a href="testimonials.html">Reviews</a>
@@ -25,86 +40,77 @@
   <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
 </nav>
 
-<div class="page-hero">
-  <span class="eyebrow">About Gabriela</span>
-  <h1>Guiding you back to<br><em>your inner compass</em></h1>
-</div>
-
-<section class="about-section" style="min-height: 640px;">
-  <div class="about-image">
-    <!--
-      PHOTO: Replace placeholder with:
-      <img src="images/gabriela-about.jpg" alt="Gabriela Trifonova">
-    -->
-    <div class="about-image-placeholder">
-      <span class="about-image-symbol">G</span>
-    </div>
-    <div class="about-image-caption">
-      <p>Gabriela Trifonova · Founder &amp; Certified QHD Specialist</p>
-    </div>
+<!-- HERO -->
+<section class="compass-hero">
+  <span class="eyebrow" style="color: rgba(201,168,76,0.55); display: block; margin-bottom: 16px;">✦ Introducing</span>
+  <h1>Compass <em>AI</em></h1>
+  <p>Your personal Quantum Human Design guide — available whenever you need clarity, day or night.</p>
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative;">
+    <a href="https://hdcompass.com/hdcompass-ai" class="btn btn-gold">Try Your First Question Free</a>
+    <a href="index.html#readings" class="btn btn-outline" style="border-color: rgba(201,168,76,0.3); color: rgba(245,237,216,0.6);">Book a Human Reading Instead</a>
   </div>
-  <div class="about-content">
-    <span class="eyebrow">My Story</span>
-    <h2 class="about-title">Hi, I'm <em>Gabriela</em></h2>
-    <p class="about-body">
-      This space was born from my deep passion for guiding others to reconnect with who they truly are. I've always had an instinct for understanding people and their paths — long before I had a system to explain it.
-    </p>
-    <p class="about-body">
-      When I discovered Quantum Human Design, it felt like unlocking a missing piece. A system that offers profound clarity and empowerment — not as theory, but as a practical tool for real life. A Human Design chart reading can reveal how your energy is designed to operate, helping you step into your power with greater confidence and ease.
-    </p>
-    <p class="about-pull">
-      "What we truly need isn't someone to tell us what to do — we need a guide to help us reconnect with what's already within."
-    </p>
-    <p class="about-body">
-      My passion lies in helping others feel seen, supported, and empowered. Through personalized Quantum Human Design guidance, I help you tune back into your inner wisdom — that quiet yet powerful voice that already knows your truth.
-    </p>
-    <p class="about-body">
-      As a Certified Quantum Human Design Specialist trained in Dr. Karen Curry Parker's system, I combine deep insight with intuitive coaching to support your journey toward greater self-understanding.
-    </p>
-    <p class="about-body">
-      Whether you're seeking direction, a deeper connection with yourself, or renewed excitement for life — I am here to walk beside you every step of the way.
-    </p>
-    <p class="about-pull" style="font-size: 20px;">
-      <strong>You already hold the answers. I'm here to help you hear them.</strong><br>
-      <span style="font-size: 14px; font-style: normal;">The Universe wants to give you what <em>you</em> want.</span>
-    </p>
-    <p class="about-sig">— 𝓖𝓪𝓫𝓻𝓲𝓮𝓵𝓪</p>
-    <p style="font-size: 12px; color: var(--warm-brown); margin-top: 6px; font-style: italic;">Founder | Human Design Compass · Guided by your inner compass</p>
-    <div class="about-certs">
-      <div>
-        <span class="about-cert-num">QHD</span>
-        <span class="about-cert-label">Certified Specialist</span>
-      </div>
-      <div>
-        <span class="about-cert-num">EN / BG</span>
-        <span class="about-cert-label">Languages</span>
-      </div>
-      <div>
-        <span class="about-cert-num">∞</span>
-        <span class="about-cert-label">Worldwide clients</span>
-      </div>
-    </div>
-    <div style="margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap;">
-      <button class="btn btn-dark" data-book>Book a Reading</button>
-      <a href="compass-ai.html" class="btn btn-outline">Try Compass AI Free</a>
-    </div>
+  <p style="font-size: 11px; color: rgba(201,168,76,0.35); margin-top: 18px; letter-spacing: 0.06em; position: relative;">No account needed · $14 CAD/month after your free question · Cancel anytime</p>
+</section>
+
+<!-- FEATURES -->
+<section class="compass-features">
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">✦</span>
+    <h3 class="compass-feat-title">Real chart data</h3>
+    <p class="compass-feat-body">Calculates your actual Quantum Human Design chart from your birth date, time, and location — not generic descriptions that could apply to anyone.</p>
+  </div>
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">◎</span>
+    <h3 class="compass-feat-title">Karen Parker's system</h3>
+    <p class="compass-feat-body">Speaks in the elevated, empowering language of Quantum Human Design — honoring who you truly are, never using limiting "Not-Self" framing.</p>
+  </div>
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">∞</span>
+    <h3 class="compass-feat-title">Always available</h3>
+    <p class="compass-feat-body">Ask about your Type, Authority, Gates, relationships, parenting, career, or anything in your life through the lens of your unique design. Any time, any question.</p>
+  </div>
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">☞</span>
+    <h3 class="compass-feat-title">Personalized to you</h3>
+    <p class="compass-feat-body">Every response is grounded in your specific chart — your Type, Profile, defined and undefined centers, and active Gates and Channels.</p>
+  </div>
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">♡</span>
+    <h3 class="compass-feat-title">Parenting compass</h3>
+    <p class="compass-feat-body">Coming soon: a dedicated parenting guide to help you raise your children in alignment with their unique design — meeting them exactly where they are.</p>
+  </div>
+  <div class="compass-feat">
+    <span class="compass-feat-symbol">★</span>
+    <h3 class="compass-feat-title">$14 CAD / month</h3>
+    <p class="compass-feat-body">One free question to start — no account needed. Subscribe for unlimited questions, cancel anytime. Less than the cost of a coffee a week.</p>
   </div>
 </section>
 
-<!-- WHAT IS QHD -->
-<section style="padding: var(--section-pad); background: var(--cream);">
-  <div style="max-width: 680px; margin: 0 auto; text-align: center;">
-    <span class="eyebrow">The System</span>
-    <h2 class="section-title" style="margin-bottom: 20px;">What is Quantum Human Design?</h2>
-    <p style="font-family: var(--serif); font-size: 18px; font-style: italic; font-weight: 300; color: var(--mid-brown); line-height: 1.75; margin-bottom: 20px;">
-      Quantum Human Design is Dr. Karen Curry Parker's elevated evolution of the traditional Human Design system — reframed with empowering, possibility-focused language that honors who you truly are.
-    </p>
-    <p style="font-size: 14px; color: var(--warm-brown); line-height: 1.75; margin-bottom: 14px;">
-      Where traditional HD uses words like "Not-Self" and "conditioning," QHD speaks of your <em>Authentic Self</em> and your <em>unique energetic blueprint</em>. It's the same mechanics — but held with a completely different energy.
-    </p>
-    <p style="font-size: 14px; color: var(--warm-brown); line-height: 1.75;">
-      At Human Design Compass, we work exclusively with the Quantum Human Design framework. Every reading, every conversation with Compass AI, and every blog post is grounded in this empowering, forward-looking system.
-    </p>
+<!-- SAMPLE CONVERSATION -->
+<section style="padding: var(--section-pad); background: var(--sand);">
+  <div style="max-width: 680px; margin: 0 auto;">
+    <span class="eyebrow">Sample conversation</span>
+    <h2 class="section-title" style="margin-bottom: 40px;">What can you ask?</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+
+      <div style="background: var(--brown); padding: 24px 28px;">
+        <p style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px;">Question from a Generator</p>
+        <p style="font-family: var(--serif); font-size: 16px; font-style: italic; color: rgba(245,237,216,0.6); margin-bottom: 14px;">"Why do I start projects with so much energy and then suddenly lose interest?"</p>
+        <p style="font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--sand); line-height: 1.7;">As an Alchemist (Generator), your Sacral energy is designed to respond to what genuinely lights you up — not to sustain momentum through sheer will. When the initial excitement fades, it's not a character flaw; it's your Sacral telling you the energy for that particular thing has been used. The invitation is to follow your gut response rather than your head's plans...</p>
+      </div>
+
+      <div style="background: var(--brown); padding: 24px 28px;">
+        <p style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 10px;">Question about parenting</p>
+        <p style="font-family: var(--serif); font-size: 16px; font-style: italic; color: rgba(245,237,216,0.6); margin-bottom: 14px;">"My daughter never listens — how do I understand her better through Human Design?"</p>
+        <p style="font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--sand); line-height: 1.7;">To give you the most aligned guidance, I'll need your daughter's birth information. Once I calculate her chart, we can explore her Type and Strategy — which will reveal exactly how she's designed to receive communication and make decisions. Manifestor children, for example, need to be informed rather than instructed...</p>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://hdcompass.com/hdcompass-ai" class="btn btn-dark">Start Your Free Question →</a>
+    </div>
   </div>
 </section>
 
