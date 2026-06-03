@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Compass AI button */
   document.querySelectorAll('[data-compass]').forEach(btn => {
     btn.addEventListener('click', () => {
-      window.location.href = 'compass-ai.html';
+      window.open('compass-ai.html', '_blank');
     });
   });
 

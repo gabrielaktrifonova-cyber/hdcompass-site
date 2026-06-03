@@ -517,8 +517,8 @@ body {
 /* ── ABOUT ────────────────────────────────────────────── */
 .about-section {
   display: grid;
-  grid-template-columns: 0.75fr 1fr;
-  min-height: 560px;
+  grid-template-columns: 0.55fr 1fr;
+  min-height: 520px;
   align-items: stretch;
 }
 .about-image {
