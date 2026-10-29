@@ -652,8 +652,12 @@
       const data = await res.json();
       if (data.active) {
         cpActivateSubscriber('Subscriber ❖');
-        msg.textContent = '❖ Welcome back! Your access is unlocked.';
+        msg.innerHTML = '❖ Access unlocked! <strong>Scroll up and enter your birth details to begin your unlimited reading.</strong>';
         msg.className = 'cp-unlock-msg success';
+        setTimeout(function() {
+          document.getElementById('cp-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('cp-name').focus();
+        }, 800);
       } else {
         msg.textContent = 'No active subscription found for this email. Please subscribe below.';
         msg.className = 'cp-unlock-msg';
