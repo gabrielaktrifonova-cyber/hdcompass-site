@@ -72,7 +72,11 @@
 
   <div>
     <span class="eyebrow">Send a message</span>
-    <form class="contact-form" name="contact" method="POST" data-netlify="true" action="/contact-thanks.html">
+    <form class="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
+      <!-- paste your Web3Forms access key between the quotes below -->
+      <input type="hidden" name="access_key" value="PASTE-YOUR-WEB3FORMS-KEY-HERE">
+      <input type="hidden" name="from_name" value="hdcompass.com contact form">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <div class="form-group">
         <label class="form-label" for="name">Your name</label>
         <input class="form-input" type="text" id="name" name="name" required placeholder="How shall I call you?">
@@ -83,7 +87,7 @@
       </div>
       <div class="form-group">
         <label class="form-label" for="subject">Subject</label>
-        <input class="form-input" type="text" id="subject" name="subject" placeholder="What's this about?">
+        <input class="form-input" type="text" id="subject" name="subject" placeholder="What's this about?" value="">
       </div>
       <div class="form-group">
         <label class="form-label" for="message">Message</label>

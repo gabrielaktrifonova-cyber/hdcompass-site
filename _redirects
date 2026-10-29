@@ -1,1 +1,16 @@
+# old Squarespace addresses -> new site
+/home                          /                301
+/home/*                        /                301
+/google-reviews                /testimonials    301
+/free-chart                    /hdcompass-ai    301
+/blog-my-inner-compass         /inner-compass   301
+/blog-my-inner-compass/a-four-day-transformation  /blog/a-four-day-transformation  301
 
+# old or shortened blog post addresses -> the real post
+/blog/aligned-parenting-human-design  /blog/raising-aligned-children-human-design        301
+/blog/centers-body                    /blog/human-design-centers-and-body-connections    301
+/blog/conditioned-self                /blog/emotional-themes-human-design                301
+/blog/four-arrows-human-design        /blog/human-design-four-arrows                     301
+/blog/human-design-centers            /blog/understanding-the-nine-human-design-centers  301
+/blog/human-design-channels           /blog/understanding-human-design-channels          301
+/blog/human-design-profile            /blog/understanding-your-human-design-profile      301

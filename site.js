@@ -54,16 +54,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Contact form — prevent default, show thank you */
+  /* Contact form — sends through Web3Forms to humandesign@hdcompass.com */
   const form = document.querySelector('.contact-form');
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Message sent ✦';
+      const original = btn.textContent;
+      const fail = () => {
+        btn.disabled = false;
+        btn.textContent = original;
+        let note = form.querySelector('.form-note');
+        if (!note) { note = document.createElement('p'); note.className = 'form-note'; note.style.cssText = 'margin-top:14px;font-size:14px;color:var(--warm-brown);text-align:center;'; form.appendChild(note); }
+        note.innerHTML = 'Sorry — that didn\u2019t send. Please email me directly at <a href="mailto:humandesign@hdcompass.com" style="text-decoration:underline">humandesign@hdcompass.com</a>';
+      };
+      const key = form.querySelector('[name="access_key"]');
+      if (!key || key.value.indexOf('PASTE') === 0) { fail(); return; }
       btn.disabled = true;
-      btn.style.background = 'var(--gold)';
-      btn.style.color = 'var(--brown)';
+      btn.textContent = 'Sending…';
+      const data = new FormData(form);
+      if (!data.get('subject')) data.set('subject', 'New message from hdcompass.com');
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const out = await res.json();
+        if (!out.success) throw new Error(out.message || 'failed');
+        form.reset();
+        btn.textContent = 'Message sent ✦';
+        btn.style.background = 'var(--gold)';
+        btn.style.color = 'var(--brown)';
+      } catch (err) { fail(); }
     });
   }
 
@@ -77,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Compass AI button */
   document.querySelectorAll('[data-compass]').forEach(btn => {
     btn.addEventListener('click', () => {
-      window.open('compass-ai.html', '_blank');
+      window.open('/compass-ai.html', '_blank');
     });
   });
 
