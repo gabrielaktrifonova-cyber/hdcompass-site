@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compass AI — your personal Quantum Human Design AI guide. Ask your first question free. Powered by Karen Parker's QHD system. $14 CAD/month.">
+  <meta property="og:title" content="Compass AI — Your Quantum Human Design Guide | HD Compass">
+  <meta property="og:description" content="Calculate your chart and get personalized Quantum Human Design guidance powered by AI. First question free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.hdcompass.com/hdcompass-ai">
+  <title>Compass AI — Quantum Human Design Guide | Human Design Compass</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=5">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── INTRO SECTION ──────────────────────────────────────── */
+    #cp-intro-wrap *, #cp-intro-wrap *::before, #cp-intro-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    #cp-intro-wrap {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      color: #f5edd8; width: 100%; background: #1a120a;
+      font-size: 16px; line-height: 1.7;
+      position: relative; overflow: hidden;
+      padding: 90px 24px 30px;
+    }
+    #cp-intro-wrap::before {
+      content: ''; position: absolute; top: -150px; left: -150px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .cpi-container { max-width: 980px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; text-align: center; }
+    .cpi-eyebrow {
+      display: inline-block; color: #e2c97e; font-size: 0.74rem; letter-spacing: 0.28em;
+      text-transform: uppercase; margin-bottom: 22px; font-weight: 500;
+    }
+    .cpi-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 300; color: #f5edd8; letter-spacing: 0.01em;
+      line-height: 1.15; margin-bottom: 22px;
+    }
+    .cpi-headline em { color: #e2c97e; font-style: italic; font-weight: 400; }
+    .cpi-subhead {
+      font-size: 1.08rem; color: rgba(245,237,216,0.72);
+      max-width: 640px; margin: 0 auto 60px; line-height: 1.7;
+      font-weight: 300;
+    }
+    .cpi-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; margin-top: 40px;
+    }
+    .cpi-step {
+      background: rgba(44,31,14,0.5);
+      border: 1px solid rgba(226,201,126,0.18);
+      border-radius: 20px; padding: 36px 26px; text-align: center;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s;
+    }
+    .cpi-step:hover {
+      border-color: rgba(226,201,126,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .cpi-step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(226,201,126,0.12);
+      border: 1px solid rgba(226,201,126,0.4);
+      color: #e2c97e; font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 500; margin-bottom: 20px;
+    }
+    .cpi-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 500;
+      color: #f5edd8; margin-bottom: 12px; letter-spacing: 0.01em;
+    }
+    .cpi-step-text {
+      font-size: 0.94rem; color: rgba(245,237,216,0.7);
+      line-height: 1.65; font-weight: 300;
+    }
+    .cpi-arrow-down {
+      text-align: center; margin-top: 50px;
+      color: #e2c97e; font-size: 1.4rem;
+      animation: cpiBounce 2s ease-in-out infinite;
+    }
+    @keyframes cpiBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+    @media (max-width: 720px) {
+      #cp-intro-wrap { padding: 50px 18px 20px; }
+      .cpi-headline { font-size: 2.1rem; margin-bottom: 16px; }
+      .cpi-eyebrow { font-size: 0.66rem; margin-bottom: 16px; }
+      .cpi-subhead { font-size: 0.96rem; margin-bottom: 32px; }
+      .cpi-steps { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+      .cpi-step {
+        padding: 18px 20px;
+        display: grid; grid-template-columns: 44px 1fr;
+        gap: 16px; align-items: center; text-align: left; border-radius: 16px;
+      }
+      .cpi-step-num { width: 38px; height: 38px; font-size: 1.15rem; margin-bottom: 0; }
+      .cpi-step-title { font-size: 1.1rem; margin-bottom: 4px; }
+      .cpi-step-text { font-size: 0.86rem; line-height: 1.5; }
+      .cpi-arrow-down { margin-top: 32px; font-size: 1.1rem; }
+    }
+
+    /* ── COMPASS AI APP ─────────────────────────────────────── */
+    #compass-wrap *, #compass-wrap *::before, #compass-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    #compass-wrap {
+      font-family: 'Jost', sans-serif; font-weight: 300;
+      color: #f5edd8; width: 100%; background: #1a120a;
+      font-size: 16px; line-height: 1.7;
+      position: relative; overflow: hidden;
+    }
+    #compass-wrap::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    #compass-wrap::after {
+      content: ''; position: absolute; bottom: -300px; left: -200px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .cp-hero { text-align: center; padding: 100px 24px 70px; position: relative; z-index: 1; }
+    .cp-orb-wrap { width: 90px; height: 90px; margin: 0 auto 32px; position: relative; }
+    .cp-orb-glow {
+      position: absolute; inset: -30px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.35) 0%, transparent 65%);
+      animation: cpBreathe 4s ease-in-out infinite;
+    }
+    .cp-hero-symbol { width: 90px; height: 90px; position: relative; z-index: 2; }
+    @keyframes cpBreathe { 0%,100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.15); opacity: 1; } }
+    .cp-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 300; color: #f5edd8; letter-spacing: 0.01em; line-height: 1.1; }
+    .cp-hero h1 em { color: #e2c97e; font-style: italic; font-weight: 400; }
+    .cp-hero .cp-hero-tag { margin-top: 24px; color: rgba(245,237,216,0.5); font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 400; }
+    .cp-container { max-width: 880px; margin: 0 auto; padding: 30px 28px 110px; position: relative; z-index: 1; }
+    .cp-form-wrap {
+      background: rgba(44,31,14,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px; padding: 56px 60px; border: 1px solid rgba(226,201,126,0.18);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    }
+    .cp-form-intro { text-align: center; margin-bottom: 44px; }
+    .cp-free-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(226,201,126,0.1); color: #e2c97e; border: 1px solid rgba(226,201,126,0.3); border-radius: 100px; padding: 8px 20px; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 26px; font-weight: 500; }
+    .cp-form-intro h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 400; color: #f5edd8; margin-bottom: 14px; line-height: 1.2; letter-spacing: 0.005em; }
+    .cp-form-intro h2 em { color: #e2c97e; font-style: italic; }
+    .cp-form-intro p { font-size: 1rem; color: rgba(245,237,216,0.65); line-height: 1.6; max-width: 460px; margin: 0 auto; }
+    .cp-form-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    #compass-wrap label { display: block; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,237,216,0.55); margin-bottom: 10px; font-weight: 500; }
+    #compass-wrap input, #compass-wrap select {
+      width: 100%; padding: 16px 20px; border: 1px solid rgba(226,201,126,0.2); border-radius: 100px;
+      background: rgba(26,18,10,0.6); color: #f5edd8; font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 300;
+      transition: all 0.25s; outline: none; -webkit-appearance: none; appearance: none;
+    }
+    #compass-wrap select { background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23e2c97e' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 22px center; padding-right: 46px; cursor: pointer; }
+    #compass-wrap input:focus, #compass-wrap select:focus { border-color: #e2c97e; background: rgba(26,18,10,0.85); box-shadow: 0 0 0 3px rgba(226,201,126,0.1); }
+    #compass-wrap input::placeholder { color: rgba(245,237,216,0.35); }
+    .cp-date-row { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 10px; }
+    .cp-time-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .cp-field-hint { font-size: 0.78rem; color: rgba(245,237,216,0.5); margin-top: 8px; font-style: italic; line-height: 1.5; }
+    .cp-btn-primary {
+      display: block; width: 100%; padding: 19px; background: #e2c97e; color: #1a120a; border: none; border-radius: 100px;
+      font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.18em; cursor: pointer;
+      transition: all 0.25s; margin-top: 36px; text-transform: uppercase; box-shadow: 0 8px 32px rgba(226,201,126,0.25);
+    }
+    .cp-btn-primary:hover { background: #f0d98a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(226,201,126,0.35); }
+    .cp-btn-primary:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .cp-loading-msg { text-align: center; margin-top: 18px; color: #e2c97e; font-size: 0.92rem; font-style: italic; min-height: 22px; }
+    .cp-error-msg { text-align: center; margin-top: 18px; color: #ff9d8a; font-size: 0.92rem; min-height: 22px; }
+    .cp-subscriber-link { text-align: center; margin-top: 36px; }
+    .cp-subscriber-link button { display: block; width: 100%; padding: 19px; background: #e2c97e; color: #1a120a; border: none; border-radius: 100px; font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.18em; cursor: pointer; transition: all 0.25s; margin-top: 16px; text-transform: uppercase; box-shadow: 0 8px 32px rgba(226,201,126,0.25); }
+    .cp-subscriber-link button:hover { background: #f0d98a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(226,201,126,0.35); color: #1a120a; }
+    .cp-subscriber-box {
+      display: none; margin-top: 28px;
+      background: linear-gradient(135deg, rgba(213,167,124,0.22) 0%, rgba(213,167,124,0.1) 100%);
+      border: 1px solid rgba(213,167,124,0.55); border-radius: 18px; padding: 30px 32px; text-align: center;
+    }
+    .cp-subscriber-box p { font-size: 0.96rem; color: rgba(245,237,216,0.9); margin-bottom: 18px; line-height: 1.55; }
+    .cp-subscriber-box input { margin-bottom: 14px; border-color: rgba(213,167,124,0.5); }
+    .cp-subscriber-box input:focus { border-color: #d5a77c; box-shadow: 0 0 0 3px rgba(213,167,124,0.18); }
+    .cp-btn-unlock {
+      display: block; width: 100%; padding: 16px; background: #d5a77c; color: #1a120a;
+      border: 1px solid #d5a77c; border-radius: 100px; font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      font-weight: 600; letter-spacing: 0.14em; cursor: pointer; text-transform: uppercase;
+      transition: all 0.25s; box-shadow: 0 6px 20px rgba(213,167,124,0.3);
+    }
+    .cp-btn-unlock:hover { background: #e0bb95; border-color: #e0bb95; transform: translateY(-1px); }
+    .cp-unlock-msg { font-size: 0.85rem; margin-top: 12px; color: #ff9d8a; }
+    .cp-unlock-msg.success { color: #88e2a8; }
+    #cp-chat-section { display: none; }
+    .cp-chat-wrap {
+      background: rgba(44,31,14,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px; overflow: hidden; border: 1px solid rgba(226,201,126,0.18);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    }
+    .cp-chat-header { background: rgba(26,18,10,0.5); padding: 24px 36px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid rgba(226,201,126,0.15); }
+    .cp-chat-header-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background: radial-gradient(circle, #e2c97e 0%, #c9a84c 100%); box-shadow: 0 0 24px rgba(226,201,126,0.4); }
+    .cp-chat-header-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: #f5edd8; line-height: 1.1; letter-spacing: 0.01em; }
+    .cp-chat-header-text p { font-size: 0.72rem; color: rgba(245,237,216,0.5); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 4px; }
+    .cp-chat-badge { margin-left: auto; background: rgba(226,201,126,0.12); color: #e2c97e; border: 1px solid rgba(226,201,126,0.3); border-radius: 100px; padding: 7px 16px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; flex-shrink: 0; }
+    .cp-chat-window { min-height: 460px; max-height: 600px; overflow-y: auto; padding: 40px 40px 18px; display: flex; flex-direction: column; gap: 24px; scroll-behavior: smooth; background: transparent; }
+    .cp-chat-window::-webkit-scrollbar { width: 6px; }
+    .cp-chat-window::-webkit-scrollbar-track { background: transparent; }
+    .cp-chat-window::-webkit-scrollbar-thumb { background: rgba(226,201,126,0.2); border-radius: 100px; }
+    .cp-msg { display: flex; gap: 14px; align-items: flex-start; animation: cpFadeUp 0.5s ease both; }
+    @keyframes cpFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .cp-msg.user { flex-direction: row-reverse; }
+    .cp-msg-avatar { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .cp-msg.ai .cp-msg-avatar { background: radial-gradient(circle, #e2c97e 0%, #c9a84c 100%); box-shadow: 0 0 16px rgba(226,201,126,0.3); }
+    .cp-msg.user .cp-msg-avatar { background: rgba(245,237,216,0.1); border: 1px solid rgba(245,237,216,0.2); }
+    .cp-msg-bubble { max-width: 80%; padding: 18px 24px; border-radius: 20px; line-height: 1.7; }
+    .cp-msg.ai .cp-msg-bubble { background: rgba(245,237,216,0.06); color: #f5edd8; border-top-left-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 400; border: 1px solid rgba(226,201,126,0.15); }
+    .cp-msg.ai .cp-msg-bubble a { color: #e2c97e; text-decoration: underline; font-weight: 500; transition: color 0.2s; }
+    .cp-msg.ai .cp-msg-bubble a:hover { color: #f0d98a; }
+    .cp-msg.user .cp-msg-bubble { background: #e2c97e; color: #1a120a; border-top-right-radius: 6px; font-size: 0.98rem; font-weight: 400; }
+    .cp-suggestions { display: flex; flex-wrap: wrap; gap: 10px; padding: 8px 20px 6px; background: transparent; }
+    .cp-chip { padding: 11px 20px; background: rgba(245,237,216,0.05); border: 1px solid rgba(226,201,126,0.3); border-radius: 100px; color: rgba(245,237,216,0.85); font-family: 'Jost', sans-serif; font-size: 0.9rem; cursor: pointer; transition: all 0.25s; font-weight: 400; }
+    .cp-chip:hover { background: #e2c97e; color: #1a120a; border-color: #e2c97e; transform: translateY(-1px); }
+    .cp-more-toggle-wrap { padding: 4px 40px 16px; background: transparent; }
+    .cp-more-toggle { background: none; border: none; color: rgba(226,201,126,0.7); font-family: 'Jost', sans-serif; font-size: 0.86rem; cursor: pointer; letter-spacing: 0.04em; padding: 6px 0; font-weight: 400; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .cp-more-toggle:hover { color: #e2c97e; }
+    .cp-more-toggle .cp-arrow { transition: transform 0.3s; display: inline-block; }
+    .cp-more-toggle.open .cp-arrow { transform: rotate(180deg); }
+    .cp-more-panel { display: none; padding: 8px 40px 22px; background: transparent; }
+    .cp-more-panel.open { display: block; animation: cpFadeUp 0.3s ease both; }
+    .cp-category { margin-bottom: 22px; }
+    .cp-category:last-child { margin-bottom: 0; }
+    .cp-category-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; color: #e2c97e; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .cp-category-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .cp-mini-chip { padding: 9px 16px; background: rgba(245,237,216,0.04); border: 1px solid rgba(226,201,126,0.25); border-radius: 100px; color: rgba(245,237,216,0.8); font-family: 'Jost', sans-serif; font-size: 0.84rem; cursor: pointer; transition: all 0.25s; font-weight: 400; line-height: 1.3; text-align: left; }
+    .cp-mini-chip:hover { background: rgba(226,201,126,0.15); border-color: #e2c97e; color: #f5edd8; }
+    .cp-parenting-hook { margin: 8px 0 0 52px; max-width: 80%; background: linear-gradient(135deg, rgba(226,201,126,0.12) 0%, rgba(201,168,76,0.08) 100%); border: 1px solid rgba(226,201,126,0.35); border-radius: 18px; padding: 22px 26px; animation: cpFadeUp 0.5s ease both; backdrop-filter: blur(10px); }
+    .cp-parenting-hook .cp-ph-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #e2c97e; font-weight: 500; margin-bottom: 8px; }
+    .cp-parenting-hook .cp-ph-title { font-family: 'Cormorant Garamond', serif; font-size: 1.32rem; font-weight: 500; color: #f5edd8; line-height: 1.3; margin-bottom: 8px; }
+    .cp-parenting-hook .cp-ph-title em { color: #e2c97e; font-style: italic; }
+    .cp-parenting-hook .cp-ph-text { font-size: 0.92rem; color: rgba(245,237,216,0.75); line-height: 1.6; margin-bottom: 16px; }
+    .cp-parenting-hook .cp-ph-btn { display: inline-block; background: #e2c97e; color: #1a120a; padding: 11px 22px; border-radius: 100px; text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; transition: all 0.25s; }
+    .cp-parenting-hook .cp-ph-btn:hover { background: #f0d98a; transform: translateY(-1px); }
+    .cp-chart-summary { background: rgba(226,201,126,0.12); border-left: 3px solid #e2c97e; padding: 14px 16px; margin: 12px 0 16px 0; font-family: 'Jost', sans-serif; font-size: 13px; white-space: pre-line; border-radius: 6px; color: #f5edd8; line-height: 1.7; }
+    .cp-typing-indicator { display: flex; align-items: center; gap: 6px; padding: 16px 22px; background: rgba(245,237,216,0.06); border: 1px solid rgba(226,201,126,0.15); border-radius: 20px; border-top-left-radius: 6px; width: fit-content; }
+    .cp-dot { width: 7px; height: 7px; background: #e2c97e; border-radius: 50%; animation: cpBounce 1.2s infinite; }
+    .cp-dot:nth-child(2) { animation-delay: 0.2s; }
+    .cp-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes cpBounce { 0%,80%,100% { transform: translateY(0); opacity: 0.6; } 40% { transform: translateY(-6px); opacity: 1; } }
+    .cp-chat-footer { background: rgba(26,18,10,0.4); padding: 22px 30px; border-top: 1px solid rgba(226,201,126,0.15); }
+    .cp-chat-input-row { display: flex; gap: 12px; align-items: flex-end; }
+    .cp-chat-input-row textarea { flex: 1; padding: 16px 22px; border: 1px solid rgba(226,201,126,0.2); border-radius: 22px; background: rgba(26,18,10,0.6); color: #f5edd8; font-family: 'Jost', sans-serif; font-size: 0.98rem; font-weight: 300; resize: none; height: 56px; outline: none; transition: all 0.25s; }
+    .cp-chat-input-row textarea:focus { border-color: #e2c97e; background: rgba(26,18,10,0.85); box-shadow: 0 0 0 3px rgba(226,201,126,0.1); }
+    .cp-chat-input-row textarea::placeholder { color: rgba(245,237,216,0.35); }
+    .cp-send-btn { width: 56px; height: 56px; background: #e2c97e; border: none; border-radius: 50%; color: #1a120a; cursor: pointer; font-size: 18px; transition: all 0.25s; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(226,201,126,0.3); }
+    .cp-send-btn:hover { background: #f0d98a; transform: translateY(-1px); }
+    .cp-send-btn:disabled { opacity: 0.4; cursor: default; }
+    #cp-upsell-section { display: none; margin-top: 32px; }
+    .cp-upsell-card { background: linear-gradient(160deg, rgba(122,82,48,0.5) 0%, rgba(107,69,38,0.5) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(226,201,126,0.3); border-radius: 24px; padding: 64px 60px; text-align: center; box-shadow: 0 20px 80px rgba(0,0,0,0.4); }
+    .cp-uc-icon-wrap { width: 64px; height: 64px; margin: 0 auto 24px; position: relative; }
+    .cp-uc-icon-glow { position: absolute; inset: -20px; border-radius: 50%; background: radial-gradient(circle, rgba(226,201,126,0.4) 0%, transparent 65%); animation: cpBreathe 4s ease-in-out infinite; }
+    .cp-uc-icon { width: 64px; height: 64px; position: relative; z-index: 2; }
+    .cp-upsell-card h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 400; color: #f5edd8; margin-bottom: 16px; line-height: 1.15; }
+    .cp-upsell-card h2 em { color: #e2c97e; font-style: italic; }
+    .cp-upsell-card > p { color: rgba(245,237,216,0.72); font-size: 1.04rem; line-height: 1.75; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cp-upsell-price { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; color: #e2c97e; margin-bottom: 4px; line-height: 1; font-weight: 500; }
+    .cp-upsell-price span { font-size: 1.1rem; color: rgba(245,237,216,0.5); font-family: 'Jost', sans-serif; font-weight: 300; }
+    .cp-upsell-sub { font-size: 0.78rem; color: rgba(245,237,216,0.5); margin-bottom: 36px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .cp-upsell-perks { list-style: none; margin: 0 auto 38px; text-align: left; max-width: 380px; }
+    .cp-upsell-perks li { padding: 13px 0; font-size: 0.98rem; color: rgba(245,237,216,0.85); display: flex; align-items: center; gap: 14px; border-bottom: 1px solid rgba(245,237,216,0.12); }
+    .cp-upsell-perks li::before { content: '✦'; color: #e2c97e; font-size: 0.75rem; flex-shrink: 0; }
+    .cp-btn-gold { display: block; width: 100%; max-width: 380px; margin: 0 auto; padding: 19px; background: #e2c97e; color: #1a120a; border: none; border-radius: 100px; font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.16em; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.25s; text-transform: uppercase; box-shadow: 0 8px 32px rgba(226,201,126,0.3); }
+    .cp-btn-gold:hover { background: #f0d98a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(226,201,126,0.4); }
+    .cp-divider-or { text-align: center; color: rgba(245,237,216,0.35); font-size: 0.74rem; letter-spacing: 0.2em; margin: 22px auto; text-transform: uppercase; }
+    .cp-btn-outline { display: block; width: 100%; max-width: 380px; margin: 0 auto; padding: 17px; background: transparent; color: #f5edd8; border: 1px solid rgba(245,237,216,0.3); border-radius: 100px; font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 400; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.25s; letter-spacing: 0.06em; }
+    .cp-btn-outline:hover { border-color: #e2c97e; color: #e2c97e; }
+    .cp-footer-note { text-align: center; font-size: 0.95rem; color: rgba(245,237,216,0.8); margin-top: 70px; letter-spacing: 0.05em; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+    @media (max-width: 600px) {
+      .cp-hero { padding: 70px 20px 50px; }
+      .cp-form-wrap { padding: 36px 24px; }
+      .cp-form-intro h2 { font-size: 2rem; }
+      .cp-upsell-card { padding: 44px 24px; }
+      .cp-upsell-card h2 { font-size: 2.1rem; }
+      .cp-chat-window { padding: 26px 18px 12px; }
+      .cp-suggestions { padding: 6px 10px 4px; }
+      .cp-more-toggle-wrap { padding: 2px 18px 14px; }
+      .cp-more-panel { padding: 4px 18px 18px; }
+      .cp-chat-header { padding: 18px 20px; gap: 12px; }
+      .cp-msg-bubble { max-width: 86%; padding: 14px 18px; }
+      .cp-msg.ai .cp-msg-bubble { font-size: 1.08rem; }
+      .cp-container { padding: 20px 18px 70px; }
+      .cp-parenting-hook { margin-left: 18px; max-width: calc(100% - 18px); padding: 18px 20px; }
+      .cp-parenting-hook .cp-ph-title { font-size: 1.18rem; }
+      .cp-footer-note { margin-top: 50px; }
+    }
+
+    /* ── PAGE WRAPPER — dark bg top to bottom ───────────────── */
+    body.compass-ai-page { background: #1a120a; }
+  </style>
+</head>
+<body class="compass-ai-page">
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><img src="logo-full.png" alt="Human Design Compass — awaken your inner compass" style="height:52px;width:auto;display:block;"></a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="index.html#readings">Chart Readings</a>
+    <a href="compass-ai.html">Compass AI</a>
+    <a href="blog.html">Blog</a>
+    <a href="testimonials.html">Reviews</a>
+    <a href="contact.html">Connect</a>
+  </div>
+  <button class="nav-cta" onclick="window.location.href='https://www.hdcompass.com/home#bookings'">Book a Reading</button>
+  <button class="nav-mobile-toggle" aria-label="Menu">☰</button>
+</nav>
+
+<!-- ── INTRO / EXPLAINER SECTION ──────────────────────────── -->
+<div id="cp-intro-wrap">
+  <div class="cpi-container">
+    <div class="cpi-eyebrow">✦ Quantum Human Design · Powered by AI</div>
+    <h1 class="cpi-headline">Discover Your <em>Human Design</em></h1>
+    <p class="cpi-subhead">A personalized AI guide based on your unique chart — calculated from your birth details and rooted in Karen Parker's Quantum Human Design system.</p>
+
+    <div class="cpi-steps">
+      <div class="cpi-step">
+        <div class="cpi-step-num">1</div>
+        <div>
+          <div class="cpi-step-title">Share Your Birth Details</div>
+          <div class="cpi-step-text">We use them to calculate your unique chart — your Type, Profile, Authority, and active Gates.</div>
+        </div>
+      </div>
+      <div class="cpi-step">
+        <div class="cpi-step-num">2</div>
+        <div>
+          <div class="cpi-step-title">Meet Your Compass</div>
+          <div class="cpi-step-text">Compass AI reads your chart and speaks directly to your design — like having a certified guide in your pocket.</div>
+        </div>
+      </div>
+      <div class="cpi-step">
+        <div class="cpi-step-num">3</div>
+        <div>
+          <div class="cpi-step-title">Ask Your First Question</div>
+          <div class="cpi-step-text">One free question, no account needed. Continue the journey for $14 CAD/month if it lights you up.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cpi-arrow-down">▾</div>
+  </div>
+</div>
+
+<!-- ── COMPASS AI APP ──────────────────────────────────────── -->
+<div id="compass-wrap">
+  <div class="cp-hero">
+    <div class="cp-orb-wrap">
+      <div class="cp-orb-glow"></div>
+      <svg class="cp-hero-symbol" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="29" fill="none" stroke="#e2c97e" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="32" cy="32" r="22" fill="none" stroke="#e2c97e" stroke-width="0.8" opacity="0.4"/>
+        <path d="M32 8 L32 14 M32 50 L32 56 M8 32 L14 32 M50 32 L56 32" stroke="#e2c97e" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M32 16 L36 32 L32 48 L28 32 Z" fill="#e2c97e" opacity="0.95"/>
+        <path d="M32 16 L36 32 L32 32 Z" fill="#1a120a"/>
+        <circle cx="32" cy="32" r="2.8" fill="#1a120a"/>
+        <circle cx="32" cy="32" r="1.2" fill="#e2c97e"/>
+      </svg>
+    </div>
+    <h1>Your Inner <em>Compass</em> Awaits</h1>
+    <p class="cp-hero-tag">Quantum Human Design · Powered by AI</p>
+  </div>
+
+  <div class="cp-container">
+    <div id="cp-form-section">
+      <div class="cp-form-wrap">
+        <div class="cp-form-intro">
+          <div class="cp-free-badge">✦ 1 Free Question — No Account Needed</div>
+          <h2>Begin Your <em>Reading</em></h2>
+          <p>Share your birth details so Compass AI can calculate your unique chart and speak directly to your design.</p>
+        </div>
+        <div class="cp-form-grid">
+          <div>
+            <label>Name</label>
+            <input type="text" id="cp-name" placeholder="Your name" />
+          </div>
+          <div>
+            <label>Email Address</label>
+            <input type="email" id="cp-email" placeholder="your@email.com" />
+            <p class="cp-field-hint">We'll send occasional Quantum Human Design wisdom — unsubscribe anytime.</p>
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <div class="cp-date-row">
+              <select id="cp-dob-day"><option value="">Day</option></select>
+              <select id="cp-dob-month">
+                <option value="">Month</option>
+                <option value="1">January</option><option value="2">February</option>
+                <option value="3">March</option><option value="4">April</option>
+                <option value="5">May</option><option value="6">June</option>
+                <option value="7">July</option><option value="8">August</option>
+                <option value="9">September</option><option value="10">October</option>
+                <option value="11">November</option><option value="12">December</option>
+              </select>
+              <select id="cp-dob-year"><option value="">Year</option></select>
+            </div>
+          </div>
+          <div>
+            <label>Time of Birth</label>
+            <div class="cp-time-row">
+              <select id="cp-tob-hour"><option value="">Hour</option></select>
+              <select id="cp-tob-minute"><option value="">Min</option></select>
+              <select id="cp-tob-ampm">
+                <option value="">AM/PM</option>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+            <p class="cp-field-hint">Don't know your exact time? Use 12:00 PM — but accuracy matters for the most precise chart.</p>
+          </div>
+          <div>
+            <label>Place of Birth</label>
+            <input type="text" id="cp-pob" placeholder="City, Country (e.g. Toronto, Canada)" />
+          </div>
+        </div>
+        <p style="text-align:center;font-size:15px;color:rgba(245,237,216,0.75);margin-bottom:10px;font-family:'Jost',sans-serif;">🔒 Your birth data is used only to calculate your chart and is never stored, sold, or shared. All conversations are private.</p>
+        <button class="cp-btn-primary" id="cp-start-btn">✦ Awaken My Compass</button>
+        <div class="cp-loading-msg" id="cp-loading-msg"></div>
+        <div class="cp-error-msg" id="cp-error-msg"></div>
+        <div class="cp-subscriber-link">
+          <button id="cp-show-subscriber">Already subscribed? Click here to unlock</button>
+        </div>
+        <div class="cp-subscriber-box" id="cp-subscriber-box">
+          <p>Enter the email address you used to subscribe and we'll unlock unlimited access for you.</p>
+          <input type="email" id="cp-subscriber-email" placeholder="your@email.com" />
+          <button class="cp-btn-unlock" id="cp-unlock-btn">✦ Unlock My Access</button>
+          <div class="cp-unlock-msg" id="cp-unlock-msg"></div>
+          <div style="margin-top:22px;padding-top:20px;border-top:1px solid rgba(213,167,124,0.3);">
+            <p style="font-size:0.88rem;color:rgba(245,237,216,0.65);margin-bottom:14px;">Have a promo code? Enter it below for free access.</p>
+            <input type="text" id="cp-promo-input" placeholder="Enter promo code" style="text-transform:uppercase;" />
+            <button class="cp-btn-unlock" id="cp-promo-btn" style="margin-top:10px;">✦ Apply Code</button>
+            <div class="cp-unlock-msg" id="cp-promo-msg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cp-chat-section">
+      <div class="cp-chat-wrap">
+        <div class="cp-chat-header">
+          <div class="cp-chat-header-avatar">
+            <svg width="22" height="22" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 16 L36 32 L32 48 L28 32 Z" fill="#1a120a"/>
+              <circle cx="32" cy="32" r="2.5" fill="#e2c97e"/>
+            </svg>
+          </div>
+          <div class="cp-chat-header-text">
+            <h3>Compass AI</h3>
+            <p>Quantum Human Design Companion</p>
+          </div>
+          <div class="cp-chat-badge" id="cp-chat-badge">1 Free Question</div>
+        </div>
+        <div class="cp-chat-window" id="cp-chat-window"></div>
+        <div class="cp-suggestions" id="cp-suggestions">
+          <button class="cp-chip" data-q="What is my strategy and authority, and how do I use them in everyday life?">What is my strategy &amp; authority?</button>
+          <button class="cp-chip" data-q="What are my greatest gifts according to my Quantum Human Design?">What are my greatest gifts?</button>
+          <button class="cp-chip" data-q="How do I make aligned decisions according to my design?">How do I make aligned decisions?</button>
+        </div>
+        <div class="cp-more-toggle-wrap" id="cp-more-toggle-wrap" style="display:none;">
+          <button class="cp-more-toggle" id="cp-more-toggle">
+            ✦ Not sure what to ask? See more questions <span class="cp-arrow">▾</span>
+          </button>
+        </div>
+        <div class="cp-more-panel" id="cp-more-panel">
+          <div class="cp-category">
+            <div class="cp-category-title">🌱 Discovering Myself</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="How do I best make decisions according to my design?">How do I best make decisions?</button>
+              <button class="cp-mini-chip" data-q="What are my unique gifts and how can I express them more fully?">What are my unique gifts?</button>
+              <button class="cp-mini-chip" data-q="What is my soul's purpose according to my chart?">What is my soul's purpose?</button>
+              <button class="cp-mini-chip" data-q="Why do I feel different from the people around me?">Why do I feel different from others?</button>
+              <button class="cp-mini-chip" data-q="What does my design say about how I'm meant to live?">How am I meant to live?</button>
+            </div>
+          </div>
+          <div class="cp-category">
+            <div class="cp-category-title">💞 Relationships &amp; Love</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="How do I show up best in my relationships according to my design?">How do I show up best in relationships?</button>
+              <button class="cp-mini-chip" data-q="What kind of partner truly aligns with my energy?">What partner aligns with my energy?</button>
+              <button class="cp-mini-chip" data-q="How can I communicate better with the people I love?">How can I communicate better with loved ones?</button>
+              <button class="cp-mini-chip" data-q="Why do I feel drained in certain relationships?">Why do I feel drained in some relationships?</button>
+              <button class="cp-mini-chip" data-q="How do I attract aligned love into my life?">How do I attract aligned love?</button>
+            </div>
+          </div>
+          <div class="cp-category">
+            <div class="cp-category-title">💼 Career &amp; Purpose</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="What kind of work would feel most aligned for my design?">What work feels most aligned for me?</button>
+              <button class="cp-mini-chip" data-q="How do I make career decisions that honor my design?">How do I make aligned career decisions?</button>
+              <button class="cp-mini-chip" data-q="Why do I keep feeling unfulfilled in my work?">Why do I feel unfulfilled in my work?</button>
+              <button class="cp-mini-chip" data-q="How can I create money flow that matches my energy?">How can I create aligned money flow?</button>
+              <button class="cp-mini-chip" data-q="Am I designed to work for myself or with others?">Should I work for myself or with others?</button>
+            </div>
+          </div>
+          <div class="cp-category">
+            <div class="cp-category-title">👶 Parenting &amp; Family</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="How can I parent in a way that honors my child's unique design?">How do I parent according to my child's design?</button>
+              <button class="cp-mini-chip" data-q="Why does my child react and behave the way they do?">Why does my child behave the way they do?</button>
+              <button class="cp-mini-chip" data-q="How do I create more harmony in my family dynamics?">How do I create harmony in my family?</button>
+              <button class="cp-mini-chip" data-q="How is my energy affecting my children?">How is my energy affecting my kids?</button>
+              <button class="cp-mini-chip" data-q="What does my child need most from me right now?">What does my child need most from me?</button>
+            </div>
+          </div>
+          <div class="cp-category">
+            <div class="cp-category-title">⚡ Energy &amp; Wellbeing</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="Why do I burn out so easily and how can I prevent it?">Why do I burn out so easily?</button>
+              <button class="cp-mini-chip" data-q="How do I protect my energy in busy or crowded environments?">How do I protect my energy around others?</button>
+              <button class="cp-mini-chip" data-q="What does true rest look like for my unique design?">What does rest look like for my design?</button>
+              <button class="cp-mini-chip" data-q="Why do I feel exhausted around certain people?">Why do certain people exhaust me?</button>
+              <button class="cp-mini-chip" data-q="How can I find a daily rhythm that nourishes me?">How do I find a daily rhythm that nourishes me?</button>
+            </div>
+          </div>
+          <div class="cp-category">
+            <div class="cp-category-title">🧭 Decisions &amp; Life Path</div>
+            <div class="cp-category-chips">
+              <button class="cp-mini-chip" data-q="I'm at a crossroads — how do I know which way to go?">I'm at a crossroads — which way do I go?</button>
+              <button class="cp-mini-chip" data-q="How do I move forward when I feel stuck in my life?">How do I move forward when I feel stuck?</button>
+              <button class="cp-mini-chip" data-q="Is this the right time to make a big life change?">Is this the right time for a big change?</button>
+              <button class="cp-mini-chip" data-q="How do I learn to trust my own inner knowing?">How do I trust my inner knowing?</button>
+              <button class="cp-mini-chip" data-q="What does this current chapter of my life want to teach me?">What does this chapter want to teach me?</button>
+            </div>
+          </div>
+        </div>
+        <textarea id="cp-user-input" style="display:none;"></textarea>
+        <div class="cp-chat-footer" id="cp-chat-footer" style="display:none;">
+          <div class="cp-chat-input-row">
+            <textarea id="cp-user-input-visible" placeholder="Ask your question…"></textarea>
+            <button class="cp-send-btn" id="cp-send-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cp-upsell-section">
+      <div class="cp-upsell-card">
+        <div class="cp-uc-icon-wrap">
+          <div class="cp-uc-icon-glow"></div>
+          <svg class="cp-uc-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6 L36 28 L58 32 L36 36 L32 58 L28 36 L6 32 L28 28 Z" fill="#e2c97e" opacity="0.95"/>
+            <circle cx="32" cy="32" r="3" fill="#1a120a"/>
+          </svg>
+        </div>
+        <h2>Continue Your <em>Journey</em></h2>
+        <p>Your free question has opened a door. Unlock unlimited conversations with Compass AI — your personal Quantum Human Design guide, available whenever you need clarity.</p>
+        <div class="cp-upsell-price">$14 CAD <span>/ month</span></div>
+        <div class="cp-upsell-sub">Cancel anytime · Instant access</div>
+        <ul class="cp-upsell-perks">
+          <li>Unlimited questions with Compass AI</li>
+          <li>Personalized to your unique design</li>
+          <li>Soulful Quantum Human Design wisdom</li>
+          <li>Available anytime you need guidance</li>
+        </ul>
+        <a href="https://buy.stripe.com/7sY00l40M6Pieo40da87K01" class="cp-btn-gold">✦ Start My Subscription</a>
+        <div class="cp-divider-or">or</div>
+        <a href="https://www.hdcompass.com/home#bookings" class="cp-btn-outline" target="_blank">Book a 1:1 Reading with Gabriela</a>
+      </div>
+    </div>
+
+    <div class="cp-footer-note">Created with love by Gabriela Trifonova · HD Compass</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Human Design Compass" style="height:48px;width:auto;display:block;margin-bottom:18px;">
+      <p class="footer-tagline">Awaken your inner compass</p>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About Gabi</a>
+      <a href="index.html#readings">Readings</a>
+      <a href="compass-ai.html">Compass AI</a>
+      <a href="blog.html">Blog</a>
+      <a href="testimonials.html">Reviews</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2024 Human Design Compass · Barrie, Ontario · All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+// ── Mobile nav toggle ───────────────────────────────────────
+(function(){
+  var toggle = document.querySelector('.nav-mobile-toggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', function() {
+      links.classList.toggle('open');
+    });
+  }
+})();
+</script>
+
+<script>
+(function() {
+  const WORKER_URL = 'https://hdcompass-ai.humandesign.workers.dev';
+  const PARENTING_FORM = 'https://forms.gle/9zc6pHVGpMiTNS9Q6';
+  const PARENTING_KEYWORDS = ['parent','parenting','child','children','kid','kids','daughter','son','baby','toddler','teen','teenager','mother','motherhood','father','fatherhood','family'];
+  let cpBirthData = {};
+  let cpChartData = null;
+  let cpMessages = [];
+  let cpQuestionCount = 0;
+  let cpIsSubscriber = false;
+  let cpParentingHookShown = false;
+  let cpLastQuestionWasParenting = false;
+
+  const daySel = document.getElementById('cp-dob-day');
+  for (let d = 1; d <= 31; d++) { const o = document.createElement('option'); o.value = d; o.textContent = d; daySel.appendChild(o); }
+
+  const yearSel = document.getElementById('cp-dob-year');
+  for (let y = new Date().getFullYear(); y >= 1920; y--) { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSel.appendChild(o); }
+
+  const hourSel = document.getElementById('cp-tob-hour');
+  for (let h = 1; h <= 12; h++) { const o = document.createElement('option'); o.value = h; o.textContent = h; hourSel.appendChild(o); }
+
+  const minSel = document.getElementById('cp-tob-minute');
+  for (let m = 0; m < 60; m++) { const o = document.createElement('option'); o.value = m; o.textContent = String(m).padStart(2,'0'); minSel.appendChild(o); }
+
+  document.getElementById('cp-show-subscriber').addEventListener('click', function() {
+    document.getElementById('cp-subscriber-box').style.display = 'block';
+    this.style.display = 'none';
+  });
+
+  function cpActivateSubscriber(badgeText) {
+    cpIsSubscriber = true;
+    document.getElementById('cp-chat-badge').textContent = badgeText || 'Subscriber ❖';
+    var footer = document.getElementById('cp-chat-footer');
+    if (footer) footer.style.display = 'block';
+    document.getElementById('cp-more-toggle-wrap').style.display = 'block';
+  }
+
+  document.getElementById('cp-unlock-btn').addEventListener('click', async function() {
+    const email = document.getElementById('cp-subscriber-email').value.trim();
+    const msg = document.getElementById('cp-unlock-msg');
+    if (!email) { msg.textContent = 'Please enter your email.'; msg.className = 'cp-unlock-msg'; return; }
+    msg.textContent = 'Checking your subscription…';
+    msg.className = 'cp-unlock-msg';
+    try {
+      const res = await fetch(WORKER_URL + '/verify-subscriber', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (data.active) {
+        cpActivateSubscriber('Subscriber ❖');
+        msg.textContent = '❖ Welcome back! Your access is unlocked.';
+        msg.className = 'cp-unlock-msg success';
+      } else {
+        msg.textContent = 'No active subscription found for this email. Please subscribe below.';
+        msg.className = 'cp-unlock-msg';
+      }
+    } catch(err) {
+      msg.textContent = 'Something went wrong — please try again.';
+      msg.className = 'cp-unlock-msg';
+    }
+  });
+
+  document.getElementById('cp-promo-btn').addEventListener('click', function() {
+    const code = (document.getElementById('cp-promo-input').value || '').trim().toUpperCase();
+    const msg = document.getElementById('cp-promo-msg');
+    const VALID_CODES = ['HDCOMPASSFREE'];
+    if (VALID_CODES.indexOf(code) !== -1) {
+      cpActivateSubscriber('Promo Access ❖');
+      msg.textContent = '❖ Promo code accepted! Unlimited access unlocked.';
+      msg.className = 'cp-unlock-msg success';
+    } else {
+      msg.textContent = "That code isn't valid — please check and try again.";
+      msg.className = 'cp-unlock-msg';
+    }
+  });
+
+  function cpComputeOffset(timeZone, year, month, day, hour, minute) {
+    try {
+      const utcMoment = new Date(Date.UTC(year, month - 1, day, hour, minute));
+      const fmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: timeZone,
+        timeZoneName: 'longOffset',
+        year: 'numeric'
+      });
+      const parts = fmt.formatToParts(utcMoment);
+      const tzPart = parts.find(p => p.type === 'timeZoneName');
+      if (!tzPart || !tzPart.value) return '+00:00';
+      let v = tzPart.value;
+      if (v === 'GMT') return '+00:00';
+      v = v.replace('GMT', '');
+      if (/^[+-]\d{2}:\d{2}$/.test(v)) return v;
+      const m = v.match(/^([+-])(\d{1,2})(?::(\d{2}))?$/);
+      if (m) { return m[1] + String(m[2]).padStart(2,'0') + ':' + (m[3] || '00'); }
+      return '+00:00';
+    } catch(e) { return '+00:00'; }
+  }
+
+  document.getElementById('cp-start-btn').addEventListener('click', async function() {
+    const btn = this;
+    const loadMsg = document.getElementById('cp-loading-msg');
+    const errMsg = document.getElementById('cp-error-msg');
+    errMsg.textContent = '';
+    loadMsg.textContent = '';
+
+    const name = document.getElementById('cp-name').value.trim();
+    const email = document.getElementById('cp-email').value.trim();
+    const day = document.getElementById('cp-dob-day').value;
+    const month = document.getElementById('cp-dob-month').value;
+    const year = document.getElementById('cp-dob-year').value;
+    const hour = document.getElementById('cp-tob-hour').value;
+    const minute = document.getElementById('cp-tob-minute').value;
+    const ampm = document.getElementById('cp-tob-ampm').value;
+    const pob = document.getElementById('cp-pob').value.trim();
+
+    if (!name || !email) { errMsg.textContent = 'Please fill in your name and email address.'; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errMsg.textContent = 'Please enter a valid email address.'; return; }
+    var fakeDomains = ['gmil.com','gmial.com','gnail.com','gmai.com','yahooo.com','hotnail.com','notemail.com','test.com','example.com','fake.com','asdf.com','aaa.com','noemail.com','nomail.com','none.com'];
+    var fakeLocals = ['test','asdf','aaaa','noreply','no-reply','fake','none','xxx','abc','qwerty','1234','admin','user'];
+    var emailLower = email.toLowerCase();
+    var emailDomain = emailLower.split('@')[1];
+    var emailLocal = emailLower.split('@')[0];
+    if (fakeDomains.indexOf(emailDomain) !== -1 || fakeLocals.indexOf(emailLocal) !== -1) { errMsg.textContent = 'Please enter your real email — that one looks like a placeholder.'; return; }
+    if (!day || !month || !year) { errMsg.textContent = 'Please fill in your full date of birth.'; return; }
+    if (!hour || minute === '' || !ampm) { errMsg.textContent = 'Please fill in your full time of birth (hour, minute, AM/PM).'; return; }
+    if (!pob) { errMsg.textContent = 'Please enter your place of birth (city and country).'; return; }
+
+    let hour24 = parseInt(hour, 10);
+    if (ampm === 'PM' && hour24 !== 12) hour24 += 12;
+    if (ampm === 'AM' && hour24 === 12) hour24 = 0;
+
+    const dobStr = year + '-' + String(month).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+    const tobStr = String(hour24).padStart(2,'0') + ':' + String(minute).padStart(2,'0');
+    const tobDisplay = hour + ':' + String(minute).padStart(2,'0') + ' ' + ampm;
+
+    cpBirthData = { name: name, email: email, dob: dobStr, tob: tobDisplay, pob: pob };
+    btn.disabled = true;
+    btn.textContent = '✦ Calculating your chart…';
+
+    try {
+      loadMsg.textContent = 'Finding your birth location…';
+      const geoRes = await fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(pob) + '&format=json&limit=1');
+      const geoData = await geoRes.json();
+      if (!geoData || geoData.length === 0) throw new Error('We could not find that location. Please try "City, Country" format (e.g. "Sofia, Bulgaria").');
+      const lat = parseFloat(geoData[0].lat);
+      const lng = parseFloat(geoData[0].lon);
+
+      loadMsg.textContent = 'Calculating your timezone…';
+      const tzRes = await fetch('https://timeapi.io/api/TimeZone/coordinate?latitude=' + lat + '&longitude=' + lng);
+      const tzData = await tzRes.json();
+      const ianaZone = tzData.timeZone;
+      if (!ianaZone) throw new Error('Could not determine timezone for that location.');
+
+      const offset = cpComputeOffset(ianaZone, parseInt(year,10), parseInt(month,10), parseInt(day,10), hour24, parseInt(minute,10));
+      const datetime = dobStr + 'T' + tobStr + offset;
+
+      loadMsg.textContent = 'Reading your chart…';
+      const chartRes = await fetch(WORKER_URL + '/get-chart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ datetime: datetime })
+      });
+      const chart = await chartRes.json();
+      if (chart.error) throw new Error(chart.error);
+      if (!chart.type) throw new Error('Chart calculation returned incomplete data. Please try again.');
+
+      cpChartData = chart;
+
+      if (chart.chartSummary) {
+        var summaryEl = document.createElement('div');
+        summaryEl.className = 'cp-chart-summary';
+        summaryEl.innerText = chart.chartSummary;
+        document.getElementById('cp-chat-window').appendChild(summaryEl);
+      }
+
+      fetch(WORKER_URL + '/save-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, name: name, hdType: chart.type || '' })
+      }).catch(function(){});
+
+      loadMsg.textContent = '';
+      document.getElementById('cp-form-section').style.display = 'none';
+      document.getElementById('cp-chat-section').style.display = 'block';
+      if (cpIsSubscriber) {
+        document.getElementById('cp-chat-badge').textContent = 'Subscriber ✦';
+        document.getElementById('cp-more-toggle-wrap').style.display = 'block';
+      }
+
+      const firstName = name.split(' ')[0];
+      const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+
+      var typeDesc = {
+        'Alchemist': 'someone whose energy is built to respond. You carry a deep, sustainable life force that turns on when life invites you in — through work, people, or opportunities that genuinely light you up. Your gut knows before your mind catches up.',
+        'Time Bender': 'a beautifully multi-passionate being. You are built to follow many threads at once, pivot quickly, and move in bursts of focused energy. When something excites you, you have access to extraordinary stamina — but only for what truly lights you up.',
+        'Initiator': 'a rare catalyst. You are here to start things, to disrupt the status quo, to make new realities happen. Your energy comes in powerful bursts — not designed for sustained effort, but for ignition.',
+        'Orchestrator': 'a wise guide and seer. You are designed to read people and systems with extraordinary depth, then direct energy from the side rather than from the center. Your impact comes through being recognized and invited — not through pushing.',
+        'Calibrator': 'one of the rarest designs on Earth — only about 1% of people. You are a mirror for your environment, deeply sensitive and uniquely attuned to the energy around you. Your wisdom unfolds over time, not in a moment.'
+      };
+
+      var authDesc = {
+        'Sacral': 'your gut. When life asks you a yes-or-no question, your body responds with a sound or a feeling — an "uh-huh" yes or an "uh-uh" no. Trust that gut response over your mind, every single time.',
+        'Emotional': 'your emotional wave. You are designed to wait through your feelings before deciding — clarity comes once the wave settles. There is no truth for you in the moment; truth shows up over time.',
+        'Splenic': 'your intuition — quiet, instant, in-the-moment. Your inner knowing speaks once, softly. Listen to that first whisper.',
+        'Ego': 'your heart and willpower. Decisions come from what you truly want and what you are ready to commit to with your whole being.',
+        'Self-Projected': 'your own voice. You need to speak things out loud — to trusted people — to hear what is actually true for you.',
+        'Mental': 'thinking out loud with your trusted circle. You discover your truth through dialogue with the right people, not in silence.',
+        'Lunar': 'time itself. You need a full lunar cycle — about 28 days — to gain real clarity on big decisions. You are designed to never rush.'
+      };
+
+      var profileDesc = {
+        '1/3': 'the Investigator / Martyr. You learn through deep research and trial-and-error — you are here to study life thoroughly, then refine through experience.',
+        '1/4': 'the Investigator / Opportunist. You build a strong foundation of knowledge, then share it through close friendships and networks.',
+        '2/4': 'the Hermit / Opportunist. You need solitude to recharge your natural gifts, then share them through your closest circle of relationships.',
+        '2/5': 'the Hermit / Heretic. You hold a quiet genius inside that the world calls on you to share, even when you would rather stay home.',
+        '3/5': 'the Martyr / Heretic. You learn through experimentation — what works and what does not — and then teach practical solutions to others.',
+        '3/6': 'the Martyr / Role Model. You learn through life experience in your first stage, then become a wise example for others later.',
+        '4/6': 'the Opportunist / Role Model. You grow through close relationships in the first half of life, then step into a wise, observant, role-model presence.',
+        '4/1': 'the Opportunist / Investigator. You build deep, foundational knowledge and share it through your trusted network of relationships.',
+        '5/1': 'the Heretic / Investigator. You are called to be a practical problem-solver, grounded in deep study and reliable knowledge.',
+        '5/2': 'the Heretic / Hermit. People project leadership onto you, but you need plenty of alone time to nourish the gifts you bring out into the world.',
+        '6/2': 'the Role Model / Hermit. You move through three life stages, becoming wiser with time. You need solitude to access your natural genius.',
+        '6/3': 'the Role Model / Martyr. You become a wise example through a lifetime of experimentation, learning, and lived experience.'
+      };
+
+      var typeText = typeDesc[chart.type] || 'a unique design with its own gifts and rhythms.';
+      var authText = authDesc[chart.authority] || 'your own unique inner knowing.';
+      var profText = profileDesc[chart.profile] || 'a unique blend of conscious and unconscious lines that shapes how you move through the world.';
+      var article = /^[AEIOU]/i.test(chart.type) ? 'an' : 'a';
+
+      let welcomeMsg = 'Welcome, ' + displayName + '. 🌿\n\n';
+      welcomeMsg += 'Your chart is here — and it is a beautiful one. Let me walk you through what I see, in plain language.\n\n';
+      welcomeMsg += '✦ You are ' + article + ' ' + chart.type + ' (' + (chart.rawType || chart.type) + ') — ' + typeText + '\n\n';
+      welcomeMsg += '✦ Your Profile is ' + chart.profile + ' — ' + profText + '\n\n';
+      welcomeMsg += '✦ Your Inner Authority is ' + chart.authority + ' — this is your most reliable decision-maker. For you, that is ' + authText + '\n\n';
+      welcomeMsg += 'This is a map, not a label — a doorway into who you already are. Now, what would you like to explore first?';
+      cpAddMessage('ai', welcomeMsg);
+    } catch(err) {
+      loadMsg.textContent = '';
+      errMsg.textContent = err.message || 'Something went wrong. Please try again.';
+      btn.disabled = false;
+      btn.textContent = '✦ Awaken My Compass';
+    }
+  });
+
+  document.getElementById('cp-more-toggle').addEventListener('click', function() {
+    const panel = document.getElementById('cp-more-panel');
+    const isOpen = panel.classList.contains('open');
+    if (isOpen) {
+      panel.classList.remove('open');
+      this.classList.remove('open');
+      this.innerHTML = '❖ Not sure what to ask? See more questions <span class="cp-arrow">▾</span>';
+    } else {
+      panel.classList.add('open');
+      this.classList.add('open');
+      this.innerHTML = '❖ Hide questions <span class="cp-arrow">▾</span>';
+    }
+  });
+
+  var sendBtn = document.getElementById('cp-send-btn');
+  if (sendBtn) sendBtn.addEventListener('click', cpSendMessage);
+  var visibleInput = document.getElementById('cp-user-input-visible');
+  if (visibleInput) visibleInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); cpSendMessage(); }
+  });
+
+  document.querySelectorAll('.cp-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.getElementById('cp-user-input').value = this.getAttribute('data-q');
+      cpHideSuggestions();
+      cpSendMessage();
+    });
+  });
+
+  document.querySelectorAll('.cp-mini-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.getElementById('cp-user-input').value = this.getAttribute('data-q');
+      cpHideSuggestions();
+      cpSendMessage();
+    });
+  });
+
+  function cpHideSuggestions() {
+    document.getElementById('cp-suggestions').style.display = 'none';
+    document.getElementById('cp-more-toggle-wrap').style.display = 'none';
+    document.getElementById('cp-more-panel').style.display = 'none';
+  }
+
+  function cpIsParentingQuestion(text) {
+    const lower = text.toLowerCase();
+    return PARENTING_KEYWORDS.some(function(kw) {
+      const regex = new RegExp('\\b' + kw + '\\b', 'i');
+      return regex.test(lower);
+    });
+  }
+
+  function cpStripMarkdown(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '$1')
+      .replace(/\*(.+?)\*/g, '$1')
+      .replace(/__(.+?)__/g, '$1')
+      .replace(/_(.+?)_/g, '$1');
+  }
+
+  function cpEscapeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function cpLinkify(text) {
+    const urlRegex = /(https?:\/\/[^\s<]+|(?:www\.)?hdcompass\.com\/[^\s<]+)/gi;
+    return text.replace(urlRegex, function(url) {
+      let cleanUrl = url.replace(/[.,;:!?)]+$/, '');
+      let trailing = url.substring(cleanUrl.length);
+      let href = cleanUrl;
+      if (!href.startsWith('http')) { href = 'https://' + href; }
+      return '<a href="' + href + '" target="_blank" rel="noopener">' + cleanUrl + '</a>' + trailing;
+    });
+  }
+
+  async function cpSendMessage() {
+    const FREE_LIMIT = cpIsSubscriber ? Infinity : 1;
+    if (cpQuestionCount >= FREE_LIMIT) { cpShowUpsell(); return; }
+    const visibleInput = document.getElementById('cp-user-input-visible');
+    const hiddenInput = document.getElementById('cp-user-input');
+    if (visibleInput && visibleInput.value.trim()) {
+      hiddenInput.value = visibleInput.value;
+    }
+    const input = hiddenInput;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    if (document.getElementById('cp-user-input-visible')) {
+      document.getElementById('cp-user-input-visible').value = '';
+    }
+    cpHideSuggestions();
+    cpLastQuestionWasParenting = cpIsParentingQuestion(text);
+    cpAddMessage('user', text);
+    cpMessages.push({ role: 'user', content: text });
+    const typingId = cpShowTyping();
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: cpMessages, birthData: cpBirthData, chartData: cpChartData })
+      });
+      const data = await res.json();
+      cpRemoveTyping(typingId);
+      let reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : 'Something shifted — please try again in a moment.';
+      reply = cpStripMarkdown(reply);
+      cpAddMessage('ai', reply);
+      cpMessages.push({ role: 'assistant', content: reply });
+      cpQuestionCount++;
+
+      if (cpLastQuestionWasParenting && !cpParentingHookShown) {
+        setTimeout(cpShowParentingHook, 600);
+      }
+
+      if (!cpIsSubscriber && cpQuestionCount >= 1) {
+        document.getElementById('cp-chat-badge').textContent = 'Free question used';
+        cpHideSuggestions();
+        setTimeout(cpShowUpsell, 8000);
+      } else if (cpIsSubscriber) {
+        document.getElementById('cp-more-toggle-wrap').style.display = 'block';
+      }
+    } catch(err) {
+      cpRemoveTyping(typingId);
+      cpAddMessage('ai', 'I\'m having a moment of stillness — please try again shortly.');
+    }
+  }
+
+  function cpShowParentingHook() {
+    if (cpParentingHookShown) return;
+    cpParentingHookShown = true;
+    const win = document.getElementById('cp-chat-window');
+    const div = document.createElement('div');
+    div.className = 'cp-parenting-hook';
+    div.innerHTML = '<div class="cp-ph-label">✦ Coming Soon</div>'
+      + '<div class="cp-ph-title">Parenting <em>Compass</em></div>'
+      + '<div class="cp-ph-text">Deeper guidance on raising your child by their unique Quantum Human Design — their strategies, struggles, gifts, and how their energy works with yours. Be the first to know when it launches.</div>'
+      + '<a href="' + PARENTING_FORM + '" target="_blank" class="cp-ph-btn">Join the Waitlist →</a>';
+    win.appendChild(div);
+    win.scrollTop = win.scrollHeight;
+  }
+
+  function cpAddMessage(role, text) {
+    const win = document.getElementById('cp-chat-window');
+    const div = document.createElement('div');
+    div.className = 'cp-msg ' + role;
+    const avatar = role === 'ai'
+      ? '<svg width="20" height="20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 16 L36 32 L32 48 L28 32 Z" fill="#1a120a"/><circle cx="32" cy="32" r="2.5" fill="#e2c97e"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#e2c97e"/></svg>';
+    let bubbleContent;
+    if (role === 'ai') {
+      bubbleContent = cpLinkify(cpEscapeHtml(text)).replace(/\n/g,'<br>');
+    } else {
+      bubbleContent = cpEscapeHtml(text).replace(/\n/g,'<br>');
+    }
+    div.innerHTML = '<div class="cp-msg-avatar">' + avatar + '</div><div class="cp-msg-bubble">' + bubbleContent + '</div>';
+    win.appendChild(div);
+    win.scrollTop = win.scrollHeight;
+  }
+
+  function cpShowTyping() {
+    const win = document.getElementById('cp-chat-window');
+    const div = document.createElement('div');
+    div.className = 'cp-msg ai';
+    const id = 'cp-typing-' + Date.now();
+    div.id = id;
+    div.innerHTML = '<div class="cp-msg-avatar"><svg width="20" height="20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 16 L36 32 L32 48 L28 32 Z" fill="#1a120a"/><circle cx="32" cy="32" r="2.5" fill="#e2c97e"/></svg></div><div class="cp-typing-indicator"><div class="cp-dot"></div><div class="cp-dot"></div><div class="cp-dot"></div></div>';
+    win.appendChild(div);
+    win.scrollTop = win.scrollHeight;
+    return id;
+  }
+
+  function cpRemoveTyping(id) { const el = document.getElementById(id); if (el) el.remove(); }
+
+  function cpShowUpsell() {
+    document.getElementById('cp-upsell-section').style.display = 'block';
+    document.getElementById('cp-upsell-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+})();
+</script>
+
+</body>
+</html>
